@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/sohantalukder.github.io/static/css/main.28140243.css",
-    "main.js": "/sohantalukder.github.io/static/js/main.14396c99.js",
-    "static/js/787.6f3be504.chunk.js": "/sohantalukder.github.io/static/js/787.6f3be504.chunk.js",
+    "main.js": "/sohantalukder.github.io/static/js/main.b1c0f8ab.js",
+    "static/js/787.1ed0c42c.chunk.js": "/sohantalukder.github.io/static/js/787.1ed0c42c.chunk.js",
     "static/media/Services.svg": "/sohantalukder.github.io/static/media/Services.22f7cefb1cf7c39d5ed41d25a37e1aa6.svg",
     "static/media/eduction.svg": "/sohantalukder.github.io/static/media/eduction.3a7883b899db7b45d1fe9658e01ec363.svg",
     "static/media/work.svg": "/sohantalukder.github.io/static/media/work.58ee424e0807f3ee4ef0497c8ae1dee3.svg",
@@ -11,11 +11,11 @@
     "static/media/chat.svg": "/sohantalukder.github.io/static/media/chat.a74b823aa03bd013673f7e5f3e3ca562.svg",
     "static/media/blog.svg": "/sohantalukder.github.io/static/media/blog.c030ef8862f5b2ac4251830aeaf31da7.svg",
     "main.28140243.css.map": "/sohantalukder.github.io/static/css/main.28140243.css.map",
-    "main.14396c99.js.map": "/sohantalukder.github.io/static/js/main.14396c99.js.map",
-    "787.6f3be504.chunk.js.map": "/sohantalukder.github.io/static/js/787.6f3be504.chunk.js.map"
+    "main.b1c0f8ab.js.map": "/sohantalukder.github.io/static/js/main.b1c0f8ab.js.map",
+    "787.1ed0c42c.chunk.js.map": "/sohantalukder.github.io/static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.28140243.css",
-    "static/js/main.14396c99.js"
+    "static/js/main.b1c0f8ab.js"
   ]
 }
