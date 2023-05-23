@@ -8,7 +8,7 @@ import { ReactComponent as ChatIcon } from "../../assets/svg/chat.svg";
 import { Link } from "react-router-dom";
 const RightMenu = () => {
     return (
-        <div className='w-[138px] h-screen fixed right-0 bg-gray shadow1 flex flex-col items-center justify-center'>
+        <div className='w-[138px] h-screen  fixed right-0 bg-gray shadow1 flex flex-col items-center justify-center'>
             <div className='flex flex-col space-y-10'>
                 <Link
                     data-tooltip-target='tooltip-default'

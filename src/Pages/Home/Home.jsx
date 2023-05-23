@@ -4,9 +4,9 @@ import RightMenu from "../../Componts/RightMenu/RightMenu";
 
 const Home = () => {
     return (
-        <div className='bg-light_background h-[100vh] w-full'>
-            <RightMenu />
+        <div className='bg-light_background h-[100vh] w-full flex justify-between'>
             <Hero />
+            <RightMenu />
         </div>
     );
 };
