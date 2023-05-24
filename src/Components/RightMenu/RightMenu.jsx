@@ -2,10 +2,10 @@ import React from "react";
 import { ReactComponent as DownArrow } from "../../assets/svg/downward-arrow.svg";
 import { HashLink } from "react-router-hash-link";
 import { elements } from "./Elements";
-import { Icon } from "./Icon";
+import { Icon } from "../Icon/Icon";
 const RightMenu = () => {
     return (
-        <div className='w-[138px] h-screen  fixed right-0 bg-dark1 shadow1 flex flex-col items-center justify-center'>
+        <div className='col-span-1 h-screen sticky right-0 bg-dark1 shadow1 flex flex-col items-center justify-center'>
             <div className='flex flex-col space-y-10'>
                 {elements.map((menu) => {
                     return (

@@ -5,7 +5,7 @@ import Home from "./Pages/Home/Home";
 
 function App() {
     return (
-        <div className='bg-bgPrimary h-full w-full flex justify-between'>
+        <div className='bg-bgPrimary h-full w-full  grid grid-cols-12 justify-between  gap-7'>
             <LeftMenu />
             <Home />
             <RightMenu />
