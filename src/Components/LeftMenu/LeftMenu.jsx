@@ -2,6 +2,7 @@ import React from "react";
 import Profile from "./Components/Profile";
 import PersonalInfo from "./Components/PersonalInfo";
 import FrontendSkills from "./Components/FrontendSkills";
+import BackendSkills from "./Components/BackendSkills";
 const LeftMenu = () => {
     return (
         <div className=' left-0 bg-dark1 shadow1 h-100vh col-span-2 sticky max-w-[305px] px-10'>
@@ -12,6 +13,7 @@ const LeftMenu = () => {
                 <hr className='border border-dark2 w-full my-8' />
                 <FrontendSkills />
                 <hr className='border border-dark2 w-full my-8' />
+                <BackendSkills />
             </div>
         </div>
     );

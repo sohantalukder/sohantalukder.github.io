@@ -1,19 +1,16 @@
 import React from "react";
 import "./skills.css";
-const FrontendSkills = () => {
+const BackendSkills = () => {
     const skills = [
-        { name: "React", rate: 80 },
-        { name: "React Native", rate: 75 },
-        { name: "Redux Toolkit", rate: 75 },
-        { name: "RTK Query", rate: 70 },
-        { name: "Tailwind CSS", rate: 85 },
-        { name: "Firebase", rate: 50 },
+        { name: "Node JS", rate: 50 },
+        { name: "Express JS", rate: 50 },
+        { name: "MongoDB", rate: 40 },
     ];
     let c = 0.1;
     return (
         <>
             <h2 className='font-medium text-lg tracking-wider text-white'>
-                Frontend Skills
+                Backend Skills
             </h2>
             <div className='mt-2.5 flex flex-col space-y-3'>
                 {skills.map((skill) => {
@@ -41,4 +38,4 @@ const FrontendSkills = () => {
     );
 };
 
-export default FrontendSkills;
+export default BackendSkills;
