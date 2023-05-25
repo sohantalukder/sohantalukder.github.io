@@ -14,6 +14,7 @@ const LeftMenu = () => {
                 <FrontendSkills />
                 <hr className='border border-dark2 w-full my-8' />
                 <BackendSkills />
+                <hr className='border border-dark2 w-full my-8' />
             </div>
         </div>
     );

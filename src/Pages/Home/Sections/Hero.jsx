@@ -4,7 +4,7 @@ import { BsArrowRight } from "react-icons/bs";
 const Hero = () => {
     return (
         <div className='container mx-auto'>
-            <div className='bg-white flex md:gap-16 items-center md:px-[60px] px-5 py-8 md:py-0 justify-between'>
+            <div className='bg-dark1 flex md:gap-16 items-center md:px-[60px] px-5 py-8 md:py-0 justify-between'>
                 <div className='w-full md:w-1/2 text-center md:text-left  '>
                     <div>
                         <h1 className='text-3xl md:text-5xl font-bold  text-black '>
