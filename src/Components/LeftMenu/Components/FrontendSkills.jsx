@@ -1,5 +1,4 @@
 import React from "react";
-import "./skills.css";
 const FrontendSkills = () => {
     const skills = [
         { name: "React", rate: 80 },
@@ -19,7 +18,7 @@ const FrontendSkills = () => {
                 {skills.map((skill) => {
                     c += 0.1;
                     return (
-                        <div>
+                        <div key={skill.name}>
                             <div className='flex justify-between items-center text-lg text-gray2 mb-1'>
                                 <p>{skill.name}</p>
                                 <p>{skill.rate}%</p>

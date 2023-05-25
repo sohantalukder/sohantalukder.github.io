@@ -9,6 +9,7 @@ import { ReactComponent as Github } from "../../assets/svg/github.svg";
 import { ReactComponent as Instagram } from "../../assets/svg/instagram.svg";
 import { ReactComponent as LinkedIn } from "../../assets/svg/linkedin.svg";
 import { ReactComponent as Twitter } from "../../assets/svg/twitter.svg";
+import { ReactComponent as Extra } from "../../assets/svg/extra.svg";
 const Icon = ({ name, ...props }) => {
     const iconTypes = {
         HomeIcon,
@@ -22,6 +23,7 @@ const Icon = ({ name, ...props }) => {
         Instagram,
         LinkedIn,
         Twitter,
+        Extra,
     };
     const ShowIcon = iconTypes[name];
     return <ShowIcon {...props} />;
