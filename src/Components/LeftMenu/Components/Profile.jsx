@@ -17,7 +17,7 @@ const Profile = () => {
                         src={PersonalImage}
                         aria-hidden
                         alt='Personal Image'
-                        className=' object-cover pt-2 min-w-[200px] min-h-auto'
+                        className=' object-cover pt-2 min-w-[150px] min-h-auto'
                     />
                 </div>
                 <div className='w-3.5 h-3.5 bg-[#7EB942] absolute z-10 bottom-5 rounded-full right-3'></div>

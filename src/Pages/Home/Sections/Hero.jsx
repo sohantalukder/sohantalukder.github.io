@@ -1,16 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
+import PersonalImage from "../../../assets/image/sohan.png";
 const Hero = () => {
     return (
         <div className='container mx-auto'>
             <div className='bg-dark1 flex md:gap-16 items-center md:px-[60px] px-5 py-8 md:py-0 justify-between'>
                 <div className='w-full md:w-1/2 text-center md:text-left  '>
                     <div>
-                        <h1 className='text-3xl md:text-5xl font-bold  text-black '>
+                        <h1 className='text-3xl md:text-5xl font-bold  text-gray '>
                             I'm Md. Sohan Talukder
                         </h1>
-                        <h1 className='text-3xl md:text-5xl font-bold  text-black mt-2'>
+                        <h1 className='text-3xl md:text-5xl font-bold  text-gray mt-2'>
                             <span className='text-yellow1'>Software</span>{" "}
                             Engineer
                         </h1>
@@ -32,9 +33,9 @@ const Hero = () => {
                 </div>
                 <div className='hidden md:block float-right'>
                     <img
-                        src='https://sohantalukder.netlify.app/static/media/heroimage.b15fdc32.png'
+                        src={PersonalImage}
                         alt='profile_image'
-                        className='max-w-[70%]'
+                        className='max-w-[400px]'
                     />
                 </div>
             </div>
