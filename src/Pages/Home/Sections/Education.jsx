@@ -29,7 +29,7 @@ const Education = () => {
         <div className='mt-12 md:mt-[70px]' id='education'>
             <Header
                 tittle={"Education"}
-                style={"mb-6 lg:mb-12 "}
+                style={"mb-6 lg:mb-12"}
                 description={
                     "A Transformative Journey of Knowledge Acquisition, Skill Development, and Personal Growth, Fostering a Lifelong Passion for Learning and Empowering Success in a Dynamic World."
                 }

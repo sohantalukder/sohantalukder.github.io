@@ -2,6 +2,7 @@ import React from "react";
 import Hero from "./Sections/Hero";
 import Education from "./Sections/Education";
 import WorkExperience from "./Sections/WorkExperience";
+import GetInTouch from "./Sections/GetInTouch";
 
 const Home = () => {
     return (
@@ -9,6 +10,7 @@ const Home = () => {
             <Hero />
             <Education />
             <WorkExperience />
+            <GetInTouch />
         </div>
     );
 };
