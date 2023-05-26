@@ -3,6 +3,7 @@ import Hero from "./Sections/Hero";
 import Education from "./Sections/Education";
 import WorkExperience from "./Sections/WorkExperience";
 import GetInTouch from "./Sections/GetInTouch";
+import Location from "./Sections/Location";
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             <Education />
             <WorkExperience />
             <GetInTouch />
+            <Location />
         </div>
     );
 };
