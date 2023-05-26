@@ -26,7 +26,7 @@ const Education = () => {
         },
     ];
     return (
-        <div className='mt-12 md:mt-[70px]'>
+        <div className='mt-12 md:mt-[70px]' id='education'>
             <Header
                 tittle={"Education"}
                 style={"mb-6 lg:mb-12 "}

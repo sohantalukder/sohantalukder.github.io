@@ -4,7 +4,7 @@ import { BsArrowRight } from "react-icons/bs";
 import PersonalImage from "../../../assets/image/sohan.png";
 const Hero = () => {
     return (
-        <div className='container mx-auto'>
+        <div className='container mx-auto' id='home'>
             <div className='bg-dark1 flex md:gap-16 items-center md:px-[60px] px-5 py-8 md:py-0 justify-between'>
                 <div className='w-full md:w-1/2 text-center md:text-left  '>
                     <div>
