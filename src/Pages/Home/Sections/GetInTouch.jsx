@@ -2,7 +2,8 @@ import React from "react";
 import Header from "../../../Components/Header/Header";
 import { Icon } from "../../../Components/Icon/Icon";
 import { useState } from "react";
-
+import emailjs from "@emailjs/browser";
+import Spinner from "../../../Components/Spinner/Spinner";
 const GetInTouch = () => {
     const initialState = { name: "", email: "", subject: "", description: "" };
     const errorState = {
@@ -43,12 +44,36 @@ const GetInTouch = () => {
             description: !description,
         });
     };
-
+    const [loading, setLoading] = useState(false);
     const handleSubmit = (e) => {
         e.preventDefault();
         const { name, email, subject, description } = fromData;
         if (name && email && subject && description) {
-            setFormData(initialState);
+            const templateParams = {
+                from_name: name,
+                message: description,
+                subject: subject,
+                email: email,
+            };
+            setLoading(true);
+            emailjs
+                .send(
+                    process.env.REACT_APP_SERVICE_ID,
+                    process.env.REACT_APP_TEMPLATE_KEY,
+                    templateParams,
+                    process.env.REACT_APP_PUBLIC_API_KEY
+                )
+                .then(
+                    (response) => {
+                        setFormData(initialState);
+                        setLoading(false);
+                        console.log("SUCCESS!", response.status, response.text);
+                    },
+                    (err) => {
+                        setLoading(false);
+                        console.log("FAILED...", err);
+                    }
+                );
             return;
         }
         handleError();
@@ -79,6 +104,7 @@ const GetInTouch = () => {
                                 onChange={(text) =>
                                     handleOnchange(text.target.value, "name")
                                 }
+                                value={fromData.name}
                             />
 
                             <input
@@ -93,6 +119,7 @@ const GetInTouch = () => {
                                 onChange={(text) =>
                                     handleOnchange(text.target.value, "email")
                                 }
+                                value={fromData.email}
                             />
                         </div>
                         <input
@@ -107,6 +134,7 @@ const GetInTouch = () => {
                             onChange={(text) =>
                                 handleOnchange(text.target.value, "subject")
                             }
+                            value={fromData.subject}
                         />
                         <input
                             type='text'
@@ -121,12 +149,13 @@ const GetInTouch = () => {
                             onChange={(text) =>
                                 handleOnchange(text.target.value, "description")
                             }
+                            value={fromData.description}
                         />
                         <button
                             type='submit'
-                            className='px-5 mt-3 py-2.5 border-[2px] border-transparent text-sm transform transaction-all text-center bg-yellow1 font-medium'
+                            className='h-10 mt-3 w-[150px] flex justify-center items-center border-[2px] border-transparent text-sm transform transaction-all text-center bg-yellow1 font-medium'
                         >
-                            Send Message
+                            {loading ? <Spinner /> : "Send Message"}
                         </button>
                     </form>
                 </div>
@@ -146,7 +175,10 @@ const GetInTouch = () => {
                                     </h3>
                                     {info.details.map((item, index) => {
                                         return (
-                                            <p className='text-sm text-text'>
+                                            <p
+                                                key={index}
+                                                className='text-sm text-text'
+                                            >
                                                 {item}
                                             </p>
                                         );
