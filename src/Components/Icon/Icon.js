@@ -11,6 +11,10 @@ import { ReactComponent as LinkedIn } from "../../assets/svg/linkedin.svg";
 import { ReactComponent as Twitter } from "../../assets/svg/twitter.svg";
 import { ReactComponent as Extra } from "../../assets/svg/extra.svg";
 import { ReactComponent as Download } from "../../assets/svg/download.svg";
+import { ReactComponent as Phone } from "../../assets/svg/iphone.svg";
+import { ReactComponent as Email } from "../../assets/svg/sent.svg";
+import { ReactComponent as Address } from "../../assets/svg/location.svg";
+import { ReactComponent as Copy } from "../../assets/svg/Copyright.svg";
 const Icon = ({ name, ...props }) => {
     const iconTypes = {
         HomeIcon,
@@ -26,6 +30,10 @@ const Icon = ({ name, ...props }) => {
         Twitter,
         Extra,
         Download,
+        Phone,
+        Email,
+        Address,
+        Copy,
     };
     const ShowIcon = iconTypes[name];
     return <ShowIcon {...props} />;
