@@ -5,12 +5,12 @@ import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import Spinner from "../../../Components/Spinner/Spinner";
 const GetInTouch = () => {
-    const initialState = { name: "", email: "", subject: "", description: "" };
+    const initialState = { name: "", email: "", subject: "", message: "" };
     const errorState = {
         name: false,
         email: false,
         subject: false,
-        description: false,
+        message: false,
     };
     const infos = [
         {
@@ -35,39 +35,32 @@ const GetInTouch = () => {
         setFormData({ ...fromData, [name]: value });
     };
     const handleError = () => {
-        const { name, email, subject, description } = fromData;
+        const { name, email, subject, message } = fromData;
         setError({
             ...error,
             name: !name,
             email: !email,
             subject: !subject,
-            description: !description,
+            message: !message,
         });
     };
     const [loading, setLoading] = useState(false);
     const handleSubmit = (e) => {
         e.preventDefault();
-        const { name, email, subject, description } = fromData;
-        if (name && email && subject && description) {
-            const templateParams = {
-                from_name: name,
-                message: description,
-                subject: subject,
-                email: email,
-            };
+        const { name, email, subject, message } = fromData;
+        if (name && email && subject && message) {
             setLoading(true);
             emailjs
                 .send(
                     process.env.REACT_APP_SERVICE_ID,
                     process.env.REACT_APP_TEMPLATE_KEY,
-                    templateParams,
+                    fromData,
                     process.env.REACT_APP_PUBLIC_API_KEY
                 )
                 .then(
                     (response) => {
                         setFormData(initialState);
                         setLoading(false);
-                        console.log("SUCCESS!", response.status, response.text);
                     },
                     (err) => {
                         setLoading(false);
@@ -83,7 +76,7 @@ const GetInTouch = () => {
             <Header
                 tittle={"Get In Touch"}
                 style={"mb-6 lg:mb-12"}
-                description={`Connect now to unlock limitless possibilities. Our team is eager to assist you with queries, support, and partnership opportunities. Reach us via phone, email, or our website. Let's chat and create greatness together!`}
+                message={`Connect now to unlock limitless possibilities. Our team is eager to assist you with queries, support, and partnership opportunities. Reach us via phone, email, or our website. Let's chat and create greatness together!`}
             />
             <div className='grid grid-cols-12 gap-5 lg:gap-7 items-start'>
                 <div className='col-span-12 lg:col-span-7 bg-dark1 p-[5%]'>
@@ -144,12 +137,12 @@ const GetInTouch = () => {
                                 !fromData.subject &&
                                 "border-red-600 hover:border-red-600"
                             }`}
-                            placeholder='Description *'
+                            placeholder='message *'
                             required
                             onChange={(text) =>
-                                handleOnchange(text.target.value, "description")
+                                handleOnchange(text.target.value, "message")
                             }
-                            value={fromData.description}
+                            value={fromData.message}
                         />
                         <button
                             type='submit'
