@@ -8,3 +8,24 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+.skill-per {
+    position: relative;
+    display: block;
+    height: 2px;
+    border-radius: 30px;
+    background: #ffb400;
+    animation: progress 0.4s ease-in-out forwards;
+    opacity: 0;
+}
+
+@keyframes progress {
+    0% {
+        width: 0;
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
