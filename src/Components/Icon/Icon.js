@@ -15,6 +15,9 @@ import { ReactComponent as Phone } from "../../assets/svg/iphone.svg";
 import { ReactComponent as Email } from "../../assets/svg/sent.svg";
 import { ReactComponent as Address } from "../../assets/svg/location.svg";
 import { ReactComponent as Copy } from "../../assets/svg/Copyright.svg";
+import { ReactComponent as Web } from "../../assets/svg/web-development.svg";
+import { ReactComponent as App } from "../../assets/svg/mobile-development.svg";
+import { ReactComponent as Design } from "../../assets/svg/sketch.svg";
 const Icon = ({ name, ...props }) => {
     const iconTypes = {
         HomeIcon,
@@ -34,6 +37,9 @@ const Icon = ({ name, ...props }) => {
         Email,
         Address,
         Copy,
+        Web,
+        App,
+        Design,
     };
     const ShowIcon = iconTypes[name];
     return <ShowIcon {...props} />;
