@@ -4,7 +4,6 @@ import { HashLink } from "react-router-hash-link";
 import { elements } from "./Elements";
 import { Icon } from "../Icon/Icon";
 const RightMenu = ({ openRightMenu }) => {
-    console.log(openRightMenu);
     return (
         <div className='flex relative'>
             <div
