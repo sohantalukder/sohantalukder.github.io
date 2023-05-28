@@ -6,10 +6,16 @@ import BackendSkills from "./Components/BackendSkills";
 import ExtraSkills from "./Components/ExtraSkills";
 import { Link } from "react-router-dom";
 import { Icon } from "../Icon/Icon";
-const LeftMenu = () => {
+const LeftMenu = ({ openLeftMenu }) => {
     return (
-        <div className='flex  col-span-2'>
-            <div className=' left-0 hidden lg:block bg-dark1 top-0 shadow1  col-span-2 min-w-[305px] sticky  px-10 pb-4'>
+        <div className='flex  relative'>
+            <div
+                className={` left-0 ${
+                    openLeftMenu
+                        ? "block xl:hidden !top-[70px] !absolute"
+                        : "hidden xl:block "
+                } bg-dark1 top-0 shadow1  col-span-2 min-w-[305px] sticky  px-10 pb-4`}
+            >
                 <div className='pt-8 lg:mt-10 flex flex-col '>
                     <Profile />
                     <hr className='border border-dark2 w-full my-8' />

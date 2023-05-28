@@ -3,10 +3,17 @@ import { ReactComponent as DownArrow } from "../../assets/svg/downward-arrow.svg
 import { HashLink } from "react-router-hash-link";
 import { elements } from "./Elements";
 import { Icon } from "../Icon/Icon";
-const RightMenu = () => {
+const RightMenu = ({ openRightMenu }) => {
+    console.log(openRightMenu);
     return (
-        <div className='flex col-span-1 justify-end'>
-            <div className=' h-screen sticky top-0 left-0 bg-dark1 shadow1 hidden lg:flex min-w-[108px] flex-col items-center justify-center'>
+        <div className='flex relative'>
+            <div
+                className={` ${
+                    openRightMenu
+                        ? "fixed top-[70px] flex xl:hidden"
+                        : "sticky top-0 hidden xl:flex"
+                }  right-0 bg-dark1 shadow1  h-screen  min-w-[108px] flex-col items-center justify-center`}
+            >
                 <div className='flex flex-col space-y-10'>
                     {elements.map((menu) => {
                         return (

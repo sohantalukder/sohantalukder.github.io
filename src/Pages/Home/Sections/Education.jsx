@@ -21,7 +21,7 @@ const Education = () => {
             course: "Secondary School Certificate",
             gpa: "5.00",
             institute: "Digulia S. M. R. High School",
-            duration: "2018 - 2022",
+            duration: "2013 - 2015",
             description: `SSC in Science, showcasing dedication to academic pursuits. Proficient in scientific principles and concepts, I possess a strong foundation across various scientific disciplines. I am eager to apply my knowledge and contribute meaningfully in the field of science.`,
         },
     ];

@@ -35,7 +35,7 @@ const Services = () => {
                     return (
                         <div
                             key={index}
-                            className='bg-dark1 p-6 md:p-8 flex flex-col items-center justify-center col-span-12 md:col-span-3'
+                            className='bg-dark1 p-6 md:p-8 flex flex-col items-center justify-center col-span-12 md:col-span-4'
                         >
                             <Icon name={service.icon} />
                             <h2 className='mt-6 text-white text-lg font-medium text-center'>
