@@ -1,15 +1,36 @@
+import { useState } from "react";
 import LeftMenu from "./Components/LeftMenu/LeftMenu";
 import RightMenu from "./Components/RightMenu/RightMenu";
 import TopBar from "./Components/TopBar/TopBar";
 import Home from "./Pages/Home/Home";
 
 function App() {
+    const [openLeftMenu, setOpenLeftMenu] = useState(false);
+    const [openRightMenu, setOpenRightMenu] = useState(false);
+    const handleLeftMenu = () => {
+        setOpenLeftMenu((prevState) => !prevState);
+    };
+    const handleRightMenu = () => {
+        setOpenRightMenu((prevState) => !prevState);
+    };
+    const handleAllMenu = () => {
+        openLeftMenu && setOpenLeftMenu(false);
+        openRightMenu && setOpenRightMenu(false);
+    };
     return (
-        <div className='bg-bgPrimary  grid grid-cols-12 justify-between  gap-7'>
-            <TopBar />
-            <LeftMenu />
+        <div
+            className='bg-bgPrimary  flex justify-between   gap-7'
+            onClick={() => handleAllMenu()}
+        >
+            <TopBar
+                handleRightMenu={() => handleRightMenu()}
+                handleLeftMenu={() => handleLeftMenu()}
+                openLeftMenu={openLeftMenu}
+                openRightMenu={openRightMenu}
+            />
+            <LeftMenu openLeftMenu={openLeftMenu} />
             <Home />
-            <RightMenu />
+            <RightMenu openRightMenu={openRightMenu} />
         </div>
     );
 }

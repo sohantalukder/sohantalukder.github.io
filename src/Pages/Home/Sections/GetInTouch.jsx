@@ -21,7 +21,7 @@ const GetInTouch = () => {
         {
             name: "Contact Number",
             icon: "Phone",
-            details: ["+8801865748726", "+88015744183"],
+            details: ["+8801865748726", "+8801521744183"],
         },
         {
             name: "Email",

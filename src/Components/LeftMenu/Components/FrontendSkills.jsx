@@ -2,6 +2,7 @@ import React from "react";
 const FrontendSkills = () => {
     const skills = [
         { name: "React", rate: 80 },
+        { name: "Next JS", rate: 65 },
         { name: "React Native", rate: 75 },
         { name: "Redux Toolkit", rate: 75 },
         { name: "RTK Query", rate: 70 },
