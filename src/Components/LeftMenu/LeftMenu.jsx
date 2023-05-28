@@ -14,7 +14,7 @@ const LeftMenu = ({ openLeftMenu }) => {
                     openLeftMenu
                         ? "block xl:hidden !top-[70px] !absolute"
                         : "hidden xl:block "
-                } bg-dark1 top-0 shadow1  col-span-2 min-w-[305px] sticky  px-10 pb-4`}
+                } bg-dark1 top-0 shadow1 duration-300 ease-out transition-all  col-span-2 min-w-[305px] sticky  px-10 pb-4`}
             >
                 <div className='pt-8 lg:mt-10 flex flex-col '>
                     <Profile />

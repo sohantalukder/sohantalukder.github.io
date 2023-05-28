@@ -48,7 +48,7 @@ export const blogElement = [
     },
     {
         id: 2,
-        name: "Deep Dive into React Native's Local Database: Optimizing Performance and Storage",
+        name: "Deep Dive into React Native's Local Database",
         image: SQLite,
         shortDesc:
             "We will explore different local database solutions available for React Native, such as SQLite, Realm, and AsyncStorage. By understanding the strengths and weaknesses of each option, we can make informed decisions on which database solution suits our specific needs.",
@@ -77,7 +77,7 @@ export const blogElement = [
     },
     {
         id: 3,
-        name: "React Hookology: Unlocking Custom Hook Magic",
+        name: "Unlocking Custom Hook Magic",
         image: Hooks,
         shortDesc:
             "React Hookology: Unlocking Custom Hook Magic is your ultimate resource for delving into the captivating world of React custom hooks. Get ready to witness the extraordinary power and versatility of these remarkable tools as we unravel their secrets and empower you to revolutionize your React development experience",
