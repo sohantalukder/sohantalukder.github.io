@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import { BsArrowRight } from "react-icons/bs";
 import PersonalImage from "../../../assets/image/sohan.png";
 const Hero = () => {
@@ -23,13 +23,13 @@ const Hero = () => {
                         Eager to learn new technologies and tools. Enthusiastic
                         about doing problem-solving and developing new tools
                     </p>
-                    <Link
-                        to='/#asd'
+                    <HashLink
+                        to='/#hire'
                         className='inline-flex items-center gap-1.5 group bg-yellow1 text-black text-base px-6 md:px-8 py-3 md:py-4 font-medium mt-[25px] '
                     >
                         HIRE ME{" "}
                         <BsArrowRight className='group-hover:translate-x-1 transition-all' />
-                    </Link>
+                    </HashLink>
                 </div>
                 <div className='hidden xl:block float-right'>
                     <img

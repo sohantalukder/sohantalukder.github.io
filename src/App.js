@@ -2,7 +2,7 @@ import { useState } from "react";
 import LeftMenu from "./Components/LeftMenu/LeftMenu";
 import RightMenu from "./Components/RightMenu/RightMenu";
 import TopBar from "./Components/TopBar/TopBar";
-import Home from "./Pages/Home/Home";
+import { Outlet } from "react-router-dom";
 
 function App() {
     const [openLeftMenu, setOpenLeftMenu] = useState(false);
@@ -29,7 +29,7 @@ function App() {
                 openRightMenu={openRightMenu}
             />
             <LeftMenu openLeftMenu={openLeftMenu} />
-            <Home />
+            <Outlet />
             <RightMenu openRightMenu={openRightMenu} />
         </div>
     );
