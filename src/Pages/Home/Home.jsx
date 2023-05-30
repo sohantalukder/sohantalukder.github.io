@@ -7,15 +7,17 @@ import Location from "./Sections/Location";
 import CopyRight from "../../Components/CopyRight/CopyRight";
 import Services from "./Sections/Services";
 import Blogs from "./Sections/Blogs";
+import Projects from "./Sections/Projects";
 
 const Home = () => {
     return (
         <div className='px-5 lg:px-0 '>
             <Hero />
             <Services />
-            <Blogs />
-            <Education />
             <WorkExperience />
+            <Projects />
+            <Education />
+            <Blogs />
             <GetInTouch />
             <Location />
             <CopyRight />
