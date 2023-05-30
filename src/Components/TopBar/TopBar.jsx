@@ -7,7 +7,7 @@ const TopBar = ({
     openRightMenu,
 }) => {
     return (
-        <div className='flex xl:hidden fixed top-0 w-full'>
+        <div className='flex xl:hidden fixed top-0 w-full z-50'>
             <div className='w-full h-[70px] bg-dark1 sticky shadow-md flex items-center justify-between px-5'>
                 <button className='relative' onClick={handleLeftMenu}>
                     <div className='relative z-20 flex items-center justify-center  transform transition-all  duration-200 w-[50px] h-[50px]'>
