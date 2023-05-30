@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BsArrowRightShort } from "react-icons/bs";
-const Blog = ({ blog }) => {
+const BlogCard = ({ blog }) => {
     const { id, name, shortDesc, description, image } = blog || {};
     return (
         <div className='flex flex-col bg-dark1'>
@@ -27,4 +27,4 @@ const Blog = ({ blog }) => {
     );
 };
 
-export default Blog;
+export default BlogCard;

@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../../Components/Header/Header";
 import { blogElement } from "../../../Components/LeftMenu/Components/blogElement";
-import Blog from "../../../Components/Blog/Blog";
+import BlogCard from "../../../Components/BlogCard/BlogCard";
 const Blogs = () => {
     return (
         <div id={"services"} className='mt-12 md:mt-[70px]'>
@@ -12,7 +12,7 @@ const Blogs = () => {
             />
             <div className='grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-5'>
                 {blogElement.map((blog, index) => {
-                    return <Blog key={index} blog={blog} />;
+                    return <BlogCard key={index} blog={blog} />;
                 })}
             </div>
         </div>
