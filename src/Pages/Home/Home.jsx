@@ -10,7 +10,7 @@ import Blogs from "./Sections/Blogs";
 
 const Home = () => {
     return (
-        <div className='px-5 md:px-0 '>
+        <div className='px-5 lg:px-0 '>
             <Hero />
             <Services />
             <Blogs />

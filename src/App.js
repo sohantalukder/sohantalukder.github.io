@@ -19,7 +19,7 @@ function App() {
     };
     return (
         <div
-            className='bg-bgPrimary  flex justify-between   gap-7'
+            className='bg-bgPrimary  flex justify-between  gap-0 lg:gap-7'
             onClick={() => handleAllMenu()}
         >
             <TopBar
