@@ -11,7 +11,7 @@ import Projects from "./Sections/Projects";
 
 const Home = () => {
     return (
-        <div className='px-5 lg:px-0 '>
+        <div className='container mx-auto px-5 3xl:px-0 max-w-7xl'>
             <Hero />
             <Services />
             <WorkExperience />

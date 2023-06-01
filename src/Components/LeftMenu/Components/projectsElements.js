@@ -8,10 +8,9 @@ export const projectElements = [
         name: "WalletPay - PayMoney Multi Wallet Mobile App",
         description:
             "WalletPay – PayMoney Multi Wallet Mobile App is a convenient and secure mobile app that offers a wide range of features to help users manage their finances efficiently. This is the Android version of PayMoney – Secure Online Payment Gateway , which is connected with secured Rest API.",
-        demoAPPLunk:
+        demoAPP:
             "https://drive.google.com/file/d/1lantzLXk93n91SN24A3VkO-pZMZBFZKe/view",
-        liveLink:
-            "https://codecanyon.net/item/walletpay-paymoney-multi-wallet-mobile-app/45435953?s_rank=1",
+        demo: "https://codecanyon.net/item/walletpay-paymoney-multi-wallet-mobile-app/45435953?s_rank=1",
         technology: ["React Native", "Redux Toolkit", "Rest API"],
         image: PayMoneyApp,
     },
@@ -22,7 +21,7 @@ export const projectElements = [
             "WalletPay – PayMoney Multi Wallet Mobile App is a convenient and secure mobile app that offers a wide range of features to help users manage their finances efficiently. This is the Android version of PayMoney – Secure Online Payment Gateway , which is connected with secured Rest API.",
         demo: "http://touristsguide.me/",
         image: TouristGuide,
-        code: [
+        codeLink: [
             { frontEnd: "https://github.com/sohantalukder/touristGuideClient" },
             {
                 backEnd:
@@ -42,19 +41,9 @@ export const projectElements = [
         name: "Lemion Ecommerce",
         description:
             "WalletPay – PayMoney Multi Wallet Mobile App is a convenient and secure mobile app that offers a wide range of features to help users manage their finances efficiently. This is the Android version of PayMoney – Secure Online Payment Gateway , which is connected with secured Rest API.",
-        demo: "http://touristsguide.me/",
+        demo: "https://lemionecommerce.vercel.app/",
         image: Lemion,
-        code: ["https://github.com/sohantalukder/lemon_ecommerce"],
+        codeLink: ["https://github.com/sohantalukder/lemon_ecommerce"],
         technology: ["NodeJs", "ExpressJs", "MongoDB", "React", "Tailwind CSS"],
-    },
-    {
-        id: 4,
-        name: "Doctors Portal",
-        description:
-            "WalletPay – PayMoney Multi Wallet Mobile App is a convenient and secure mobile app that offers a wide range of features to help users manage their finances efficiently. This is the Android version of PayMoney – Secure Online Payment Gateway , which is connected with secured Rest API.",
-        demo: "http://touristsguide.me/",
-        image: Doctors_Portal,
-        code: ["https://github.com/sohantalukder/Doctors_Portal"],
-        technology: ["NodeJs", "ExpressJs", "MongoDB", "React", "Bootstrap"],
     },
 ];

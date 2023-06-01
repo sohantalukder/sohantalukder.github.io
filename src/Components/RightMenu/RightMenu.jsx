@@ -10,7 +10,7 @@ const RightMenu = ({ openRightMenu }) => {
                 className={` ${
                     openRightMenu
                         ? "fixed top-[70px] flex xl:hidden"
-                        : "sticky top-0 hidden xl:flex"
+                        : "sticky top-0 hidden xl:hidden"
                 }  right-0 bg-dark1 shadow1  h-screen  min-w-[108px] flex-col items-center justify-center`}
             >
                 <div className='flex flex-col space-y-10'>
