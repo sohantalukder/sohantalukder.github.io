@@ -1,64 +1,25 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { BsLink45Deg, BsGithub } from "react-icons/bs";
 const ProjectCard = ({ project = {}, index }) => {
     const {
         name,
-        id,
         image,
         demo,
-        demoApp,
+        demoAPP,
         technology,
-        live,
         codeLink,
         description,
+        scroll: scrollX,
+        icon,
     } = project;
     const [scroll, setScroll] = useState(false);
-
-    // .pro__text {
-    //     display: flex;
-    //     width: 30rem;
-    //     height: auto;
-    //     flex-direction: column;
-    //     text-align: center;
-    //     justify-content: center;
-    // }
-    // @media (max-width: 1020px) {
-    //     .pro__text {
-    //         margin: 0 auto;
-    //     }
-    // }
-    // @media (max-width: 400px) {
-    //     .pro__text {
-    //         width: 100%;
-    //     }
-    // }
-    // .pro__text img {
-    //     width: 7rem;
-    //     position: absolute;
-    //     top: -2px;
-    //     right: -19px;
-    // }
-    // .pro__text h3 {
-    //     font-size: 24;
-    //     text-transform: uppercase;
-    //     color: red;
-    //     margin-bottom: 2rem;
-    //     position: relative;
-    // }
-    // .pro__text p {
-    //     font-size: 16;
-    //     color: red;
-    //     text-align: center;
-    //     text-transform: none;
-    //     font-weight: 500;
-    // }
 
     return (
         <>
             <div
-                className={`flex flex-col lg:flex-row rounded-xl bg-dark1 h-[50rem] gap-12 m-0 w-auto xl:h-[27rem] xl:p-8 xl:gap-32 ${
+                className={`flex flex-col lg:flex-row rounded-lg bg-dark1 h-[50rem] gap-6 m-0 w-auto xl:h-[27rem] xl:p-8  ${
                     index % 2 === 0 && "flex-row-reverse"
                 }`}
             >
@@ -69,7 +30,7 @@ const ProjectCard = ({ project = {}, index }) => {
                             alt='website'
                             style={{
                                 transform: scroll
-                                    ? `translateY(${"-83%"})`
+                                    ? `translateY(${scrollX})`
                                     : "translateY(0%)",
                                 transition: "transform 10s ease-in-out",
                             }}
@@ -77,22 +38,57 @@ const ProjectCard = ({ project = {}, index }) => {
                             onMouseLeave={() => setScroll(false)}
                         />
                     </a>
-                </div>
-                <div className='pro__text'>
-                    <h3>{name}</h3>
-                    <p>{description}</p>
-                    <div className='stack'>
-                        <p>{"techno1"}</p>
-                        <p>{"techno2"}</p>
+                </div>{" "}
+                <div className=' flex w-full m-0  sm:w-[30rem] h-auto flex-col text-center justify-center'>
+                    <h3 className='text-lg xl:text-xl font-semibold text-gray mb-2'>
+                        {name} {icon}
+                    </h3>
+                    <p className='text-text text-sm xl:text-base'>
+                        {description}
+                    </p>
+                    <div className='flex flex-row justify-center items-center gap-2 mt-4'>
+                        {technology?.map((item, index) => (
+                            <div
+                                className='bg-gray text-sm xl:text-base rounded-sm px-1 py-0.5 text-text'
+                                key={index}
+                            >
+                                {item}
+                            </div>
+                        ))}
                     </div>
-                    <div className='links'>
-                        <a target='_blank' href={"code"} rel='noreferrer'>
-                            Code <i className='fa-brands fa-github'></i>
-                        </a>
-                        <a target='_blank' href={"demo"} rel='noreferrer'>
-                            Live Demo
-                            <i className='fa-solid fa-arrow-up-right-from-square link-icon'></i>
-                        </a>
+                    <div className='mt-4 flex gap-3 justify-center'>
+                        {demoAPP && (
+                            <Link className='text-gray '>
+                                <span>Demo App</span> 📱
+                            </Link>
+                        )}
+                        {demo && (
+                            <Link className='text-gray flex items-center gap-1'>
+                                <span>Live Demo</span> <BsLink45Deg />
+                            </Link>
+                        )}
+                        {codeLink?.map((item, index) => {
+                            const { frontEnd, backEnd } = item || {};
+                            return (
+                                <Fragment key={index}>
+                                    {!frontEnd && !backEnd && (
+                                        <Link className='text-gray flex items-center gap-1'>
+                                            Code <BsGithub />
+                                        </Link>
+                                    )}
+                                    {frontEnd && (
+                                        <Link className='text-gray flex items-center gap-1'>
+                                            Frontend Code <BsGithub />
+                                        </Link>
+                                    )}
+                                    {backEnd && (
+                                        <Link className='text-gray flex items-center gap-1'>
+                                            Backend Code <BsGithub />
+                                        </Link>
+                                    )}
+                                </Fragment>
+                            );
+                        })}
                     </div>
                 </div>
             </div>
