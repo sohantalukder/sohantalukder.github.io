@@ -17,12 +17,15 @@ const Hero = () => {
                 <div className='w-full xl:w-1/2 text-center md:text-left  '>
                     <div>
                         <h1 className='text-2xl lg:text-3xl xl:text-4xl font-bold  text-gray '>
-                            Javascript Developer 👋
+                            Javascript Developer (React, React Native) 👋
                         </h1>
                     </div>
                     <p className='text-text text-base mt-[18px]'>
-                        Hi, I'm Md. Sohan Talukder Akash. A passionate
-                        Javascript Developer based in Dhaka, Bangladesh. 📍
+                        I'm Md. Sohan Talukder Akash, a passionate and dedicated
+                        Javascript Developer based in Dhaka, Bangladesh. With
+                        expertise in JavaScript, I strive to create efficient
+                        and innovative web and app solutions, constantly staying
+                        up-to-date with the latest industry trends.📍
                     </p>
                     <div className='flex justify-start mt-5 gap-3'>
                         <Link
