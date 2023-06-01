@@ -11,21 +11,26 @@ export const elements = [
     },
     {
         id: 3,
-        name: "Work",
+        name: "Experience",
         icon: "WorkIcon",
     },
     {
         id: 4,
+        name: "Projects",
+        icon: "Project",
+    },
+    {
+        id: 5,
         name: "Education",
         icon: "EducationIcon",
     },
     {
-        id: 5,
+        id: 6,
         name: "Blog",
         icon: "BlogIcon",
     },
     {
-        id: 6,
+        id: 7,
         name: "Hire",
         icon: "ChatIcon",
     },

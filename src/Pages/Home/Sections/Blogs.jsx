@@ -4,7 +4,7 @@ import { blogElement } from "../../../Components/LeftMenu/Components/blogElement
 import BlogCard from "../../../Components/BlogCard/BlogCard";
 const Blogs = () => {
     return (
-        <div id={"services"} className='mt-12 md:mt-[70px]'>
+        <div id='blog' className='mt-12 md:mt-[70px]'>
             <Header
                 style={"mb-6 lg:mb-12"}
                 tittle={"Blogs"}

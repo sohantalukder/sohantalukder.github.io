@@ -29,7 +29,7 @@ const WorkExperience = () => {
         },
     ];
     return (
-        <div className='mt-12 md:mt-[70px]' id='work'>
+        <div className='mt-12 md:mt-[70px]' id='experience'>
             <Header
                 tittle={"Work Experience"}
                 style={"mb-6 lg:mb-12 "}

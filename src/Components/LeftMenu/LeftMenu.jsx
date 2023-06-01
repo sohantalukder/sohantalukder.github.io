@@ -8,12 +8,12 @@ import { Link } from "react-router-dom";
 import { Icon } from "../Icon/Icon";
 const LeftMenu = ({ openLeftMenu }) => {
     return (
-        <div className='flex  relative'>
+        <div className='flex  relative z-10'>
             <div
                 className={` left-0 ${
                     openLeftMenu
                         ? "block xl:hidden !top-[70px] !absolute"
-                        : "hidden xl:block "
+                        : "hidden"
                 } bg-dark1 top-0 shadow1 duration-300 ease-out transition-all  col-span-2 min-w-[305px] sticky  px-10 pb-4`}
             >
                 <div className='pt-8 lg:mt-10 flex flex-col '>

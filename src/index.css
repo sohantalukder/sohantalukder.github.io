@@ -29,3 +29,34 @@ body {
         opacity: 1;
     }
 }
+.hero-img {
+    background-image: url("./assets/image/sohan.png");
+    width: 25rem;
+    height: 25rem;
+    background-size: cover;
+    background-position: contain;
+    background-repeat: no-repeat;
+    border: 3px solid #767676;
+    animation: morph 8s ease-in-out infinite;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    position: relative;
+    transition: all 1s ease-in-out;
+    background-color: #ffb80d;
+}
+@media (max-width: 500px) {
+    .hero-img {
+        width: 20rem;
+        height: 20rem;
+    }
+}
+@keyframes morph {
+    0% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    50% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+}
