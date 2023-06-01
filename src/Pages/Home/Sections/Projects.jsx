@@ -5,7 +5,7 @@ import ProjectCard from "../../../Components/ProjectCard/ProjectCard";
 
 const Projects = () => {
     return (
-        <div className='mt-12 md:mt-[70px]' id='work'>
+        <div id='projects' className='mt-12 md:mt-[70px]'>
             <Header
                 tittle={"My Projects"}
                 style={"mb-6 lg:mb-12 "}

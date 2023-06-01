@@ -28,27 +28,22 @@ const Hero = () => {
                         up-to-date with the latest industry trends.📍
                     </p>
                     <div className='flex justify-start mt-5 gap-3'>
-                        <Link
-                            to={{
-                                pathname: "https://github.com/sohantalukder",
-                            }}
+                        <a
                             target='_blank'
+                            href='https://github.com/sohantalukder'
                             className='bg-gray px-3 py-0.5 flex items-center justify-center gap-1'
                         >
                             <AiFillGithub className='text-black text-2xl' />
                             <p>Github</p>
-                        </Link>
-                        <Link
-                            to={{
-                                pathname:
-                                    "https://www.linkedin.com/in/sohantalukder/",
-                            }}
+                        </a>
+                        <a
                             target='_blank'
+                            href='https://www.linkedin.com/in/sohantalukder/'
                             className='bg-gray px-3 py-0.5 flex items-center justify-center gap-1'
                         >
                             <AiFillLinkedin className='text-black text-2xl' />
                             <p>LinkedIn</p>
-                        </Link>
+                        </a>
                     </div>
                     <div className='mt-5 flex flex-col md:flex-row justify-start items-center gap-3'>
                         <p className='text-text font-medium text-xl flex flex-col md:flex-row items-center gap-0.5 md:gap-2'>

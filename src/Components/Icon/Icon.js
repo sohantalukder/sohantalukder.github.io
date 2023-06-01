@@ -18,6 +18,7 @@ import { ReactComponent as Copy } from "../../assets/svg/Copyright.svg";
 import { ReactComponent as Web } from "../../assets/svg/web-development.svg";
 import { ReactComponent as App } from "../../assets/svg/mobile-development.svg";
 import { ReactComponent as Design } from "../../assets/svg/sketch.svg";
+import { ReactComponent as Project } from "../../assets/svg/projects.svg";
 const Icon = ({ name, ...props }) => {
     const iconTypes = {
         HomeIcon,
@@ -40,6 +41,7 @@ const Icon = ({ name, ...props }) => {
         Web,
         App,
         Design,
+        Project,
     };
     const ShowIcon = iconTypes[name];
     return <ShowIcon {...props} />;
