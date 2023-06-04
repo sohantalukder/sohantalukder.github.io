@@ -20,7 +20,7 @@ export const projectElements = [
         name: "Tourist Guide",
         icon: "✈️",
         description:
-            "WalletPay – PayMoney Multi Wallet Mobile App is a convenient and secure mobile app that offers a wide range of features to help users manage their finances efficiently. This is the Android version of PayMoney – Secure Online Payment Gateway , which is connected with secured Rest API.",
+            "Discover and explore your dream destinations with our tourist guide website. Immerse yourself in local culture, uncover hidden gems, and visit iconic landmarks. Enhance your travel experience by hiring experienced guides through our platform. Create unforgettable memories with us as your trusted companion on your next adventure.",
         demo: "http://touristsguide.me/",
         image: TouristGuide,
         scroll: "-83%",
@@ -45,7 +45,7 @@ export const projectElements = [
         icon: "🛒",
         scroll: "-20%",
         description:
-            "WalletPay – PayMoney Multi Wallet Mobile App is a convenient and secure mobile app that offers a wide range of features to help users manage their finances efficiently. This is the Android version of PayMoney – Secure Online Payment Gateway , which is connected with secured Rest API.",
+            "Lemion: Your one-stop e-commerce destination for a wide range of products. Discover fashion, electronics, home appliances, beauty essentials, and more. Enjoy a seamless shopping experience with secure payments, reliable shipping, and dedicated customer support. Shop with confidence at Lemion and find everything you need in one place.",
         demo: "https://lemionecommerce.vercel.app/",
         image: Lemion,
         codeLink: ["https://github.com/sohantalukder/lemon_ecommerce"],
