@@ -1,13 +1,19 @@
 import React from "react";
 import PersonalImage from "../../../assets/image/sohan.png";
 import { Icon } from "../../Icon/Icon";
+import { Link } from "react-router-dom";
 const Profile = () => {
     const links = [
-        { name: "Facebook", link: "www.facebook.com" },
-        { name: "Github", link: "www.facebook.com" },
-        { name: "LinkedIn", link: "www.facebook.com" },
-        { name: "Instagram", link: "www.facebook.com" },
-        { name: "Twitter", link: "www.facebook.com" },
+        { name: "Facebook", link: "https://www.facebook.com/sohantalukder0/" },
+        { name: "Github", link: "https://github.com/sohantalukder" },
+        {
+            name: "LinkedIn",
+            link: "https://www.linkedin.com/in/sohantalukder/",
+        },
+        {
+            name: "Instagram",
+            link: "https://www.instagram.com/sohantalukder0/",
+        },
     ];
     return (
         <div className='flex flex-col items-center'>
@@ -31,18 +37,16 @@ const Profile = () => {
             <div className='flex flex-row space-x-3.5 mt-4'>
                 {links.map((item) => {
                     return (
-                        <a
-                            key={item.name}
+                        <Link
                             target='_blank'
-                            rel='noreferrer'
-                            href={item?.link}
+                            to={item?.link}
                             className=' w-8 h-8 rounded-full bg-yellow1 flex justify-center items-center'
                         >
                             <Icon
                                 name={item?.name}
                                 className={"fill-black h-5 w-5"}
                             />
-                        </a>
+                        </Link>
                     );
                 })}
             </div>
