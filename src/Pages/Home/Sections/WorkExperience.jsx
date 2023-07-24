@@ -3,11 +3,23 @@ import Header from "../../../Components/Header/Header";
 
 const WorkExperience = () => {
     const works = [
-        {
+                {
             position: "Software Engineer",
+            location: "Uttara-10, Dhaka",
+            company: "Orangetoolz",
+            duration: "July 2023 - Present",
+            responsibilities: [
+                "Cross-platform Mobile App Development using React Native",
+                "Try to provide quick solutions and proactive troubleshooting support to swiftly resolve subtle and complex issues as the team Member.",
+                "Worked as a productive and positive team member to code, test and debug operations that saved time.",
+                "Evaluated and became knowledgeable in new standards, technologies, and trends in mobile apps so that more than 3 technologies and 24+ packages became familiar and successfully implemented",
+            ],
+        },
+        {
+            position: "Jr. Software Engineer",
             location: "Nikunja-2, Dhaka",
             company: "TechVillage",
-            duration: "July 2022 - Present",
+            duration: "July 2022 - July 2023",
             responsibilities: [
                 "Cross-platform Mobile App Development using React Native",
                 "Try to provide quick solutions and proactive troubleshooting support to swiftly resolve subtle and complex issues as the team Member.",
