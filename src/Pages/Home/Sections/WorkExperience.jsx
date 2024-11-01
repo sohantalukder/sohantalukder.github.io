@@ -3,11 +3,22 @@ import Header from "../../../Components/Header/Header";
 
 const WorkExperience = () => {
     const works = [
-                {
+               {
+            position: "Software Engineer",
+            location: "Dhanmondi, Dhaka",
+            company: "Selise Digital Platforms",
+            duration: "October 2024 - Present",
+            responsibilities: [
+                "Developing high-quality, cross-platform mobile applications using React Native, focusing on user-centric designs and robust functionality.",
+                "Actively providing fast solutions and proactive troubleshooting support to address complex technical issues as a team contributor.",
+                "Collaborating effectively within cross-functional teams to code, test, and debug applications, enhancing efficiency and performance.",
+                "Continuously researching and implementing the latest standards, technologies, and trends in mobile applications, expanding expertise with over 3 new technologies and 24+ packages for optimized solutions.",
+            ],
+        }, {
             position: "Software Engineer",
             location: "Uttara-10, Dhaka",
             company: "Orangetoolz",
-            duration: "July 2023 - Present",
+            duration: "July 2023 - October 2024",
             responsibilities: [
                 "Cross-platform Mobile App Development using React Native",
                 "Try to provide quick solutions and proactive troubleshooting support to swiftly resolve subtle and complex issues as the team Member.",
