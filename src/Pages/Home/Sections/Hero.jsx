@@ -17,13 +17,13 @@ const Hero = () => {
                 <div className='w-full xl:w-1/2 text-center md:text-left  '>
                     <div>
                         <h1 className='text-2xl lg:text-3xl xl:text-4xl font-bold  text-gray '>
-                            Javascript Developer (React, React Native) 👋
+                            TypeScript Developer 👋
                         </h1>
                     </div>
                     <p className='text-text text-base mt-[18px]'>
                         I'm Md. Sohan Talukder Akash, a passionate and dedicated
-                        Javascript Developer based in Dhaka, Bangladesh. With
-                        expertise in JavaScript, I strive to create efficient
+                        TypeScript Developer based in Dhaka, Bangladesh. With
+                        expertise in TypeScript, I strive to create efficiently
                         and innovative web and app solutions, constantly staying
                         up-to-date with the latest industry trends.📍
                     </p>
