@@ -41,6 +41,13 @@ const imageVariants: Variants = {
 }
 
 export default function HeroSection() {
+
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+  }
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-4 py-20  sm:py-0 sm:px-4 lg:px-6">
       <div className="max-w-7xl mx-auto w-full">
@@ -95,7 +102,7 @@ export default function HeroSection() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button size="lg" className="bg-black text-white dark:bg-white dark:text-black font-medium">
+                <Button size="lg" onClick={() => scrollToSection('#projects')} className="bg-black text-white dark:bg-white dark:text-black font-medium cursor-pointer">
                   View My Work
                   <ArrowRight className="w-4 h-4" />
                 </Button>
@@ -104,10 +111,16 @@ export default function HeroSection() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button size="lg" variant="outline" className="font-medium">
-                  <Download className="w-4 h-4" />
-                  Download CV
-                </Button>
+                <Link 
+                  href="/sohan-talukder-cv.pdf" 
+                  download="Sohan_Talukder_CV.pdf"
+                  target="_blank"
+                >
+                  <Button size="lg" variant="outline" className="font-medium cursor-pointer">
+                    <Download className="w-4 h-4" />
+                    Download CV
+                  </Button>
+                </Link>
               </motion.div>
             </motion.div>
 
