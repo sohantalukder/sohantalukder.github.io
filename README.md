@@ -2,6 +2,8 @@
 
 A modern, responsive personal portfolio built with Next.js, TypeScript, Tailwind CSS, and shadcn/ui components.
 
+🌐 **Live Demo**: [https://sohantalukder.github.io/](https://sohantalukder.github.io/)
+
 ## ✨ Features
 
 - **Modern Design**: Clean, professional, and eye-catching UI
@@ -11,6 +13,7 @@ A modern, responsive personal portfolio built with Next.js, TypeScript, Tailwind
 - **Contact Form**: Working contact form for inquiries
 - **SEO Optimized**: Built with Next.js for optimal performance
 - **Accessible**: WCAG compliant components
+- **GitHub Pages**: Automated deployment with GitHub Actions
 
 ## 🛠️ Tech Stack
 
@@ -20,6 +23,7 @@ A modern, responsive personal portfolio built with Next.js, TypeScript, Tailwind
 - **UI Components**: shadcn/ui
 - **Icons**: Lucide React
 - **Theme**: next-themes for dark/light mode
+- **Deployment**: GitHub Pages with GitHub Actions
 
 ## 📝 Sections
 
@@ -41,8 +45,8 @@ A modern, responsive personal portfolio built with Next.js, TypeScript, Tailwind
 
 1. Clone the repository:
 ```bash
-git clone <your-repo-url>
-cd portfolio
+git clone https://github.com/sohantalukder/sohantalukder.github.io.git
+cd sohantalukder.github.io
 ```
 
 2. Install dependencies:
@@ -70,6 +74,9 @@ portfolio/
 │   │   └── ...             # Other sections
 │   └── lib/                # Utilities
 ├── public/                 # Static assets
+├── .github/
+│   └── workflows/
+│       └── deploy.yml      # GitHub Actions workflow
 └── ...
 ```
 
@@ -102,15 +109,41 @@ Place your images in the `public/` directory:
 
 ## 🚀 Deployment
 
-### Vercel (Recommended)
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Deploy automatically
+### GitHub Pages (Current Setup)
 
-### Other Platforms
+This portfolio is automatically deployed to GitHub Pages using GitHub Actions. Here's how it works:
+
+1. **Automatic Deployment**: Every push to the `dev` branch triggers the deployment workflow
+2. **Build Process**: GitHub Actions builds the Next.js app as a static site
+3. **Live Site**: The site is deployed to [https://sohantalukder.github.io/](https://sohantalukder.github.io/)
+
+#### To deploy your own version:
+
+1. Fork this repository
+2. Enable GitHub Pages in your repository settings:
+   - Go to Settings → Pages
+   - Under "Source", select "GitHub Actions"
+3. Push changes to the `dev` branch
+4. GitHub Actions will automatically build and deploy your site
+
+#### Manual Build for Testing:
+```bash
+npm run build  # Creates static export in 'out' directory
+```
+
+### Alternative Deployment Options
+
+- **Vercel**: Connect GitHub repo for automatic deployment
 - **Netlify**: Connect GitHub repo and deploy
 - **Firebase Hosting**: `npm run build` then `firebase deploy`
-- **GitHub Pages**: Use GitHub Actions for deployment
+
+## ⚙️ GitHub Actions Workflow
+
+The deployment is handled by `.github/workflows/deploy.yml` which:
+- Installs Node.js and dependencies
+- Builds the Next.js static export
+- Deploys to GitHub Pages
+- Runs on every push to `dev` branch
 
 ## 🤝 Contributing
 
@@ -126,12 +159,25 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 💬 Contact
 
-Md. Sohan Talukder Akash
-- Website: [sohantalukder.netlify.app](https://sohantalukder.netlify.app)
-- GitHub: [@sohantalukder](https://github.com/sohantalukder)
-- Medium: [@sohantalukder](https://sohantalukder.medium.com)
-- LinkedIn: [sohantalukder](https://linkedin.com/in/sohantalukder)
+**Md. Sohan Talukder Akash**
+- 🌐 Website: [https://sohantalukder.github.io/](https://sohantalukder.github.io/)
+- 💼 GitHub: [@sohantalukder](https://github.com/sohantalukder)
+- 📝 Medium: [@sohantalukder](https://sohantalukder.medium.com)
+- 💼 LinkedIn: [sohantalukder](https://linkedin.com/in/sohantalukder)
 
 ---
 
-⭐ Star this repo if you found it helpful!
+⭐ **Star this repo if you found it helpful!**
+
+## 🔧 Troubleshooting
+
+### Common Issues:
+1. **Build Errors**: Make sure all dependencies are installed with `npm install`
+2. **GitHub Pages Not Updating**: Check the Actions tab for deployment status
+3. **Images Not Loading**: Ensure images are in the `public/` directory
+4. **Styling Issues**: Run `npm run build` locally to test static export
+
+### Environment Setup:
+- Node.js version: 18+
+- Next.js: 15.3.4
+- Static export enabled for GitHub Pages compatibility
