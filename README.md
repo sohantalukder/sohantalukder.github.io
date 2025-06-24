@@ -1,71 +1,137 @@
-# Getting Started with Create React App
+# Sohan Talukder - Personal Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive personal portfolio built with Next.js, TypeScript, Tailwind CSS, and shadcn/ui components.
 
-## Available Scripts
+## ✨ Features
 
-In the project directory, you can run:
+- **Modern Design**: Clean, professional, and eye-catching UI
+- **Dark/Light Mode**: Toggle between themes with smooth transitions
+- **Responsive**: Optimized for all device sizes
+- **Blog Integration**: Displays latest articles from Medium
+- **Contact Form**: Working contact form for inquiries
+- **SEO Optimized**: Built with Next.js for optimal performance
+- **Accessible**: WCAG compliant components
 
-### `npm start`
+## 🛠️ Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **Icons**: Lucide React
+- **Theme**: next-themes for dark/light mode
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📝 Sections
 
-### `npm test`
+1. **Hero** - Introduction with call-to-action
+2. **About** - Personal story and skills showcase
+3. **Experience** - Work history and education
+4. **Projects** - Featured projects with live demos
+5. **Blog** - Latest articles from Medium
+6. **Contact** - Contact form and social links
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Getting Started
 
-### `npm run build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js 18+ 
+- npm or yarn
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository:
+```bash
+git clone <your-repo-url>
+cd portfolio
+```
 
-### `npm run eject`
+2. Install dependencies:
+```bash
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Run the development server:
+```bash
+npm run dev
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📁 Project Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+portfolio/
+├── src/
+│   ├── app/                 # Next.js app directory
+│   ├── components/          # React components
+│   │   ├── ui/             # shadcn/ui components
+│   │   ├── navigation.tsx   # Navigation component
+│   │   ├── hero-section.tsx # Hero section
+│   │   └── ...             # Other sections
+│   └── lib/                # Utilities
+├── public/                 # Static assets
+└── ...
+```
 
-## Learn More
+## 🎨 Customization
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Personal Information
+Update the following files with your information:
+- `src/components/hero-section.tsx` - Name, title, description
+- `src/components/about-section.tsx` - About text and skills
+- `src/components/experience-section.tsx` - Work experience and education
+- `src/components/projects-section.tsx` - Featured projects
+- `src/components/contact-section.tsx` - Contact information
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Styling
+- Global styles: `src/app/globals.css`
+- Theme configuration: `tailwind.config.js`
+- shadcn/ui components: `src/components/ui/`
 
-### Code Splitting
+### Blog Integration
+The blog section currently uses mock data. To integrate with Medium:
+1. Set up Medium RSS feed parsing
+2. Update `src/components/blog-section.tsx`
+3. Consider using a service like RSS2JSON for CORS handling
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 📱 Adding Images
 
-### Analyzing the Bundle Size
+Place your images in the `public/` directory:
+- `profile.jpg` - Your profile picture
+- `project1.jpg`, `project2.jpg`, etc. - Project screenshots
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🚀 Deployment
 
-### Making a Progressive Web App
+### Vercel (Recommended)
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Deploy automatically
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Other Platforms
+- **Netlify**: Connect GitHub repo and deploy
+- **Firebase Hosting**: `npm run build` then `firebase deploy`
+- **GitHub Pages**: Use GitHub Actions for deployment
 
-### Advanced Configuration
+## 🤝 Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-### Deployment
+## 📄 License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This project is open source and available under the [MIT License](LICENSE).
 
-### `npm run build` fails to minify
+## 💬 Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# personal_website
+Md. Sohan Talukder Akash
+- Website: [sohantalukder.netlify.app](https://sohantalukder.netlify.app)
+- GitHub: [@sohantalukder](https://github.com/sohantalukder)
+- Medium: [@sohantalukder](https://sohantalukder.medium.com)
+- LinkedIn: [sohantalukder](https://linkedin.com/in/sohantalukder)
+
+---
+
+⭐ Star this repo if you found it helpful!
