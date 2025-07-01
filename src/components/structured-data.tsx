@@ -35,7 +35,7 @@ export function StructuredData() {
     "sameAs": [
       "https://github.com/sohantalukder",
       "https://linkedin.com/in/sohantalukder",
-      "https://twitter.com/sohantalukder",
+      "https://twitter.com/sohantalukder0",
       "https://sohantalukder.medium.com"
     ],
     "email": "mailto:sohantalukder007@gmail.com"

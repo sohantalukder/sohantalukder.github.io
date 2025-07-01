@@ -97,7 +97,7 @@ export const metadata: Metadata = {
     images: [thumbnailUrl],
   },
   verification: {
-    google: "google-site-verification-code", // Add your Google verification code here
+    google: "hTWXbF_598kgXibWYI9PbGiTV07irnhJlxX1Ukg0S1M",
   },
   category: "technology",
   classification: "Portfolio Website",

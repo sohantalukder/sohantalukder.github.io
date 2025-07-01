@@ -131,12 +131,6 @@ This portfolio is automatically deployed to GitHub Pages using GitHub Actions. H
 npm run build  # Creates static export in 'out' directory
 ```
 
-### Alternative Deployment Options
-
-- **Vercel**: Connect GitHub repo for automatic deployment
-- **Netlify**: Connect GitHub repo and deploy
-- **Firebase Hosting**: `npm run build` then `firebase deploy`
-
 ## ⚙️ GitHub Actions Workflow
 
 The deployment is handled by `.github/workflows/deploy.yml` which:

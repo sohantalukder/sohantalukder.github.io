@@ -150,7 +150,7 @@ export default function HeroSection() {
               <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
                 <Link 
                   target="_blank"
-                  href="https://twitter.com/sohantalukder" 
+                  href="https://twitter.com/sohantalukder0" 
                   className="text-foreground/80 hover:text-foreground transition-colors"
                 >
                   <Twitter className="w-6 h-6" />
