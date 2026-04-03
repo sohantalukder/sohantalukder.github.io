@@ -6,36 +6,52 @@ import Link from "next/link"
 
 const projects = [
   {
-    id: 1,
-    name: "WalletPay",
-    icon: "📱",
-    description: "Secure mobile wallet app with multi-currency support, instant transfers, and integrated payment gateway. Built with React Native and connected to REST API.",
-    demoAPP: "https://drive.google.com/file/d/1lantzLXk93n91SN24A3VkO-pZMZBFZKe/view",
-    demo: "https://codecanyon.net/item/walletpay-paymoney-multi-wallet-mobile-app/45435953?s_rank=1",
-    technology: ["React Native", "Redux Toolkit", "Rest API"]
+    id: 4,
+    name: "Creolytix",
+    icon: "🧠",
+    description: "AI-powered resilience and risk intelligence platform that helps organizations monitor global events, analyze risks, and make data-driven decisions in real-time. It unifies cybersecurity, supply chain, travel, and operational risks into a single ecosystem, enabling faster and smarter crisis response.",
+    demo: "https://creolytix.io/",
+    technology: ["React Native", "REST API", "Real-time Data", "AI Integration"],
+    note: "Developed mobile application using React Native"
   },
   {
-    id: 2,
-    name: "Tourist Guide",
-    icon: "✈️",
-    description: "Interactive platform connecting travelers with local guides. Features destination discovery, guide booking, and personalized travel recommendations.",
-    demo: "http://touristsguide.me/",
-    codeLink: [
-      { frontEnd: "https://github.com/sohantalukder/touristGuideClient" },
-      { backEnd: "https://github.com/sohantalukder/tourist_guide_backend" }
-    ],
-    technology: ["NodeJs", "ExpressJs", "MongoDB", "NextJs", "Tailwind CSS"]
+    id: 5,
+    name: "Prime Now",
+    icon: "💳",
+    description: "Digital banking platform offering a seamless and modern financial experience. Features include instant account creation, secure transactions, real-time alerts, and a fully mobile-first banking system designed for convenience and speed.",
+    demo: "https://primenow.ai/",
+    demoAPP: "https://play.google.com/store/apps/details?id=com.primenow.app",
+    technology: ["Flutter", "Fintech", "Secure Payments"],
   },
   {
-    id: 3,
-    name: "Lemion Shop",
-    icon: "🛒",
-    description: "Modern e-commerce platform with intuitive product browsing, secure checkout, and real-time inventory management.",
-    demo: "https://lemionecommerce.vercel.app/",
-    codeLink: ["https://github.com/sohantalukder/lemon_ecommerce"],
-    technology: ["NodeJs", "ExpressJs", "MongoDB", "React", "Tailwind CSS"]
+    id: 6,
+    name: "SalesPype",
+    icon: "📊",
+    description: "All-in-one CRM and sales automation platform that helps businesses manage leads, automate marketing, track pipelines, and improve conversion rates. It integrates communication tools like email, SMS, and calls into a single unified system.",
+    demo: "https://salespype.com/",
+    demoAPP: "https://play.google.com/store/apps/details?id=com.salespypeprov2",
+    demoIOS: "https://apps.apple.com/us/app/salespype/id1538315340",
+    technology: ["React Native", "CRM System", "Automation", "API Integration"],
+  },
+  {
+    id: 7,
+    name: "FTPO (Find The Perfect Outfits)",
+    icon: "👕",
+    description: "Fashion discovery platform that helps users find and explore the perfect outfits based on trends, preferences, and styles. Designed to enhance the shopping experience with personalized recommendations.",
+    demo: "https://findtheperfectoutfits.com/",
+    technology: ["React Native", "E-commerce", "Recommendation System"],
+  },
+  {
+    id: 8,
+    name: "Learnyx",
+    icon: "🎮",
+    description: "Gamified learning platform that combines education with interactive gameplay. It allows users to read, explore stories, and engage in learning experiences through games, making education more fun and engaging.",
+    demo: "https://www.learnyx.com/",
+    demoAPP: "https://play.google.com/store/apps/details?id=com.learnyx.litzone",
+    demoIOS: "https://apps.apple.com/us/app/learnix-ai/id6751657270",
+    technology: ["React Native", "EdTech", "Gamification"],
   }
-]
+];
 
 export function ProjectsSection() {
   return (
@@ -76,35 +92,21 @@ export function ProjectsSection() {
                     </Link>
                   )}
                   {project.demoAPP && (
-                    <Link href={project.demoAPP} target="_blank">
+                    <Link href={project.demoAPP} target="_blank" rel="noopener noreferrer">
                       <Button variant="default" size="sm" className="h-8 text-xs">
                         <ExternalLink className="mr-1 h-3 w-3" />
-                        App
+                        Android
                       </Button>
                     </Link>
                   )}
-                  {project.codeLink && Array.isArray(project.codeLink) ? (
-                    project.codeLink.map((link, index) => {
-                      if (typeof link === 'string') {
-                        return (
-                          <Link key={index} href={link} target="_blank">
-                            <Button variant="outline" size="sm" className="h-8 text-xs">
-                              <Github className="mr-1 h-3 w-3" />
-                              Code
-                            </Button>
-                          </Link>
-                        )
-                      }
-                      return Object.entries(link).map(([key, value]) => (
-                        <Link key={key} href={value as string} target="_blank">
-                          <Button variant="outline" size="sm" className="h-8 text-xs cursor-pointer">
-                            <Github className="mr-1 h-3 w-3" />
-                            {key === 'frontEnd' ? 'Frontend' : 'Backend'}
-                          </Button>
-                        </Link>
-                      ))
-                    })
-                  ) : null}
+                  {"demoIOS" in project && project.demoIOS && (
+                    <Link href={project.demoIOS} target="_blank" rel="noopener noreferrer">
+                      <Button variant="default" size="sm" className="h-8 text-xs">
+                        <ExternalLink className="mr-1 h-3 w-3" />
+                        iOS
+                      </Button>
+                    </Link>
+                  )}
                 </div>
               </CardContent>
             </Card>

@@ -9,7 +9,7 @@ const experiences = [
     company: "Selise Digital Platforms",
     duration: "Oct 2024 - Present",
     description: "Developing high-quality, cross-platform mobile applications using React Native with focus on user-centric designs and robust functionality.",
-    tech: ["React Native", "JavaScript", "TypeScript", "Mobile Development"]
+    tech: ["React Native","Flutter", "Dart", "JavaScript", "TypeScript", "Mobile Development"]
   },
   {
     position: "Software Engineer",

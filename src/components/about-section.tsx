@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
 const skills = [
-  "JavaScript", "TypeScript", "React","React Native","Swift","Flutter","Next.js", "Node.js", 
+  "JavaScript", "TypeScript", "React", "React Native", "Swift", "Flutter", "Dart","Next.js", "Node.js", 
   "MongoDB", "Git", "AWS", "Docker", "CI/CD", 
 ]
 
