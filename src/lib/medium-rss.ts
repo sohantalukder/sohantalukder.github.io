@@ -1,3 +1,5 @@
+import https from "node:https"
+
 export interface BlogPost {
   title: string
   description: string
@@ -9,6 +11,40 @@ export interface BlogPost {
 }
 
 const MEDIUM_RSS_URL = "https://sohantalukder.medium.com/feed"
+
+const RSS_HEADERS = {
+  Accept: "application/rss+xml, application/xml, text/xml, */*",
+  "User-Agent":
+    "Mozilla/5.0 (compatible; SohanPortfolio/1.0; +https://sohantalukder.medium.com)",
+}
+
+/** Node https avoids Next.js patched fetch, which often gets 403 from Medium during static export. */
+function fetchMediumRssXml(): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const url = new URL(MEDIUM_RSS_URL)
+    const req = https.request(
+      {
+        hostname: url.hostname,
+        path: `${url.pathname}${url.search}`,
+        method: "GET",
+        headers: RSS_HEADERS,
+      },
+      (res) => {
+        const code = res.statusCode ?? 0
+        if (code < 200 || code >= 300) {
+          res.resume()
+          reject(new Error(`RSS request failed: ${code}`))
+          return
+        }
+        const chunks: Buffer[] = []
+        res.on("data", (c: Buffer) => chunks.push(c))
+        res.on("end", () => resolve(Buffer.concat(chunks).toString("utf8")))
+      }
+    )
+    req.on("error", reject)
+    req.end()
+  })
+}
 
 function decodeBasicEntities(text: string): string {
   return text
@@ -56,20 +92,7 @@ function excerptFromHtml(html: string, maxLen: number): string {
   return `${plain.slice(0, maxLen).trim()}...`
 }
 
-export async function getMediumPosts(limit = 6): Promise<BlogPost[]> {
-  const res = await fetch(MEDIUM_RSS_URL, {
-    headers: {
-      Accept: "application/rss+xml, application/xml, text/xml, */*",
-      "User-Agent": "Mozilla/5.0 (compatible; SohanPortfolio/1.0; +https://sohantalukder.medium.com)",
-    },
-    next: { revalidate: 3600 },
-  })
-
-  if (!res.ok) {
-    throw new Error(`RSS request failed: ${res.status}`)
-  }
-
-  const xml = await res.text()
+function parseRssXml(xml: string, limit: number): BlogPost[] {
   const itemRe = /<item>([\s\S]*?)<\/item>/gi
   const posts: BlogPost[] = []
   let match: RegExpExecArray | null
@@ -101,4 +124,9 @@ export async function getMediumPosts(limit = 6): Promise<BlogPost[]> {
   }
 
   return posts
+}
+
+export async function getMediumPosts(limit = 6): Promise<BlogPost[]> {
+  const xml = await fetchMediumRssXml()
+  return parseRssXml(xml, limit)
 }
