@@ -4,9 +4,10 @@ export const dynamic = 'force-static'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Sohan Talukder - Full Stack Developer Portfolio',
+    name: 'Md. Sohan Talukder Akash — React Native & Flutter Portfolio',
     short_name: 'Sohan Portfolio',
-    description: 'Personal portfolio of Sohan Talukder, a Full Stack Developer from Bangladesh specializing in TypeScript, React, and modern web development.',
+    description:
+      'Portfolio of Md. Sohan Talukder Akash: React Native and Flutter developer, mobile app developer in Bangladesh.',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',

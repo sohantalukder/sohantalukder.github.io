@@ -20,32 +20,40 @@ const thumbnailUrl = `${siteUrl}/thumbnail.png`;
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Sohan Talukder - Full Stack Developer | TypeScript Expert",
-    template: "%s | Sohan Talukder"
+    default:
+      "Md. Sohan Talukder Akash | React Native & Flutter Developer | Mobile App Developer Bangladesh",
+    template: "%s | Sohan Talukder",
   },
-  description: "Sohan Talukder is a passionate Full Stack Developer from Bangladesh with 3+ years of experience in TypeScript, React, Next.js, and modern web development. Specializing in building impactful web and mobile applications.",
+  description:
+    "Md. Sohan Talukder Akash (Sohan Talukder) is a React Native and Flutter app developer based in Dhaka, Bangladesh. Portfolio of mobile and web apps—React Native Developer Bangladesh, Mobile App Developer Bangladesh.",
   applicationName: "Sohan Talukder Portfolio",
   referrer: "origin-when-cross-origin",
   keywords: [
+    "Md. Sohan Talukder Akash",
     "Sohan Talukder",
     "Md. Sohan Talukder",
     "Sohan",
+    "Akash",
+    "Sohan Talukder React Native Developer",
+    "App Developer",
+    "Flutter Developer",
+    "React Native Developer",
+    "React Native Developer Bangladesh",
+    "Mobile App Developer Bangladesh",
     "Full Stack Developer",
     "TypeScript Developer",
     "React Developer",
     "Next.js Developer",
     "JavaScript Developer",
     "Web Developer",
-    "Frontend Developer",
-    "Backend Developer",
     "Bangladesh Developer",
     "Dhaka Developer",
     "Portfolio",
-    "Web Development",
     "Mobile App Development",
     "React Native",
+    "Flutter",
     "Node.js",
-    "Software Engineer"
+    "Software Engineer",
   ],
   authors: [{ name: "Md. Sohan Talukder", url: siteUrl }],
   creator: "Md. Sohan Talukder",
@@ -58,7 +66,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    nocache: true,
     googleBot: {
       index: true,
       follow: true,
@@ -76,24 +83,28 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: "Sohan Talukder Portfolio",
-    title: "Sohan Talukder - Full Stack Developer | TypeScript Expert",
-    description: "Passionate Full Stack Developer from Bangladesh with expertise in TypeScript, React, Next.js. Building innovative web and mobile applications with modern technologies.",
+    title:
+      "Md. Sohan Talukder Akash | React Native & Flutter Developer | Mobile App Developer Bangladesh",
+    description:
+      "React Native and Flutter developer in Dhaka, Bangladesh. Md. Sohan Talukder Akash builds mobile apps for iOS and Android—portfolio, projects, and contact.",
     images: [
       {
         url: thumbnailUrl,
         width: 1200,
         height: 630,
-        alt: "Sohan Talukder - Full Stack Developer Portfolio",
+        alt: "Md. Sohan Talukder Akash — React Native and Flutter developer, Bangladesh",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@sohantalukder",
-    creator: "@sohantalukder",
-    title: "Sohan Talukder - Full Stack Developer | TypeScript Expert",
-    description: "Passionate Full Stack Developer from Bangladesh with expertise in TypeScript, React, Next.js. Building innovative web and mobile applications.",
+    site: "@sohantalukder0",
+    creator: "@sohantalukder0",
+    title:
+      "Md. Sohan Talukder Akash | React Native & Flutter Developer | Mobile App Developer Bangladesh",
+    description:
+      "React Native and Flutter developer in Dhaka, Bangladesh. Mobile apps, web projects, and open-source work.",
     images: [thumbnailUrl],
   },
   verification: {
@@ -112,8 +123,8 @@ export const metadata: Metadata = {
     "msapplication-TileColor": "#ffb80d",
     "msapplication-config": "browserconfig.xml",
     "twitter:image": thumbnailUrl,
-    "twitter:image:alt": "Sohan Talukder - Full Stack Developer Portfolio",
-    "og:image:alt": "Sohan Talukder - Full Stack Developer Portfolio",
+    "twitter:image:alt": "Md. Sohan Talukder Akash — React Native and Flutter developer, Bangladesh",
+    "og:image:alt": "Md. Sohan Talukder Akash — React Native and Flutter developer, Bangladesh",
     "article:author": "Md. Sohan Talukder",
     "profile:first_name": "Sohan",
     "profile:last_name": "Talukder",

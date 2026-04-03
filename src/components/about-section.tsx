@@ -20,11 +20,13 @@ export default function AboutSection() {
           <StaggerItem>
             <div>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-                I&apos;m a JavaScript developer with 3+ years of experience building web and mobile applications. 
-                I specialize in React and React Native development, focusing on creating clean, efficient solutions.
+                I&apos;m a JavaScript and TypeScript developer with 3+ years of experience building mobile and web
+                applications from Bangladesh. I focus on React Native and Flutter for iOS and Android, plus
+                React and Next.js for the web—clean architecture and maintainable code.
               </p>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Passionate about writing clean code, learning new technologies, and contributing to open-source projects.
+                Passionate about shipping reliable apps, learning new tools, and contributing to open-source when
+                I can.
               </p>
             </div>
           </StaggerItem>

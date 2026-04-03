@@ -8,12 +8,13 @@ export function StructuredData() {
     "alternateName": ["Sohan Talukder", "Sohan", "Md. Sohan Talukder Akash", "Md. Sohan Talukder", "Sohan Talukder Akash", "Akash", "sohantalukder"],
     "url": siteUrl,
     "image": `${siteUrl}/thumbnail.png`,
-    "jobTitle": "Full Stack Developer",
+    "jobTitle": "React Native & Flutter Developer",
     "worksFor": {
       "@type": "Organization",
       "name": "Freelancer"
     },
-    "description": "Passionate Full Stack Developer from Bangladesh with expertise in TypeScript, React, Next.js, and modern web development.",
+    "description":
+      "Md. Sohan Talukder Akash (Sohan Talukder) is a mobile app developer in Dhaka, Bangladesh, building apps with React Native, Flutter, and modern web stacks.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Dhaka",
@@ -21,13 +22,18 @@ export function StructuredData() {
     },
     "nationality": "Bangladeshi",
     "knowsAbout": [
+      "React Native",
+      "Flutter",
+      "Dart",
+      "Mobile App Development",
+      "iOS",
+      "Android",
       "TypeScript",
       "JavaScript",
       "React",
       "Next.js",
       "Node.js",
       "Web Development",
-      "Mobile App Development",
       "Frontend Development",
       "Backend Development",
       "Software Engineering"
@@ -38,7 +44,7 @@ export function StructuredData() {
       "https://twitter.com/sohantalukder0",
       "https://sohantalukder.medium.com"
     ],
-    "email": "mailto:sohantalukder007@gmail.com"
+    "email": "mailto:mdtalukder.sohan@gmail.com"
   };
 
   const websiteSchema = {
@@ -47,7 +53,8 @@ export function StructuredData() {
     "name": "Sohan Talukder Portfolio",
     "alternateName": "Sohan Portfolio",
     "url": siteUrl,
-    "description": "Personal portfolio website of Sohan Talukder, a Full Stack Developer from Bangladesh",
+    "description":
+      "Official portfolio of Md. Sohan Talukder Akash—React Native and Flutter developer, Mobile App Developer Bangladesh.",
     "author": {
       "@type": "Person",
       "name": "Md. Sohan Talukder"
@@ -57,24 +64,31 @@ export function StructuredData() {
       "@type": "Person", 
       "name": "Md. Sohan Talukder"
     },
-    "copyrightYear": "2024",
+    "copyrightYear": "2026",
     "genre": "Portfolio",
-    "keywords": "Sohan Talukder, Full Stack Developer, TypeScript, React, Portfolio, Bangladesh Developer"
+    "keywords":
+      "Md. Sohan Talukder Akash, Sohan Talukder, React Native Developer Bangladesh, Mobile App Developer Bangladesh, Flutter Developer, React Native, Bangladesh"
   };
 
   const professionalService = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "Sohan Talukder - Web Development Services",
-    "description": "Professional web and mobile app development services specializing in TypeScript, React, and modern web technologies",
+    "name": "Sohan Talukder — Mobile & Web Development",
+    "description":
+      "React Native, Flutter, and full-stack web development for clients in Bangladesh and worldwide.",
     "provider": {
       "@type": "Person",
       "name": "Md. Sohan Talukder"
     },
-    "areaServed": "Worldwide",
+    "areaServed": [
+      { "@type": "Country", "name": "Bangladesh" },
+      { "@type": "Place", "name": "Worldwide" }
+    ],
     "serviceType": [
+      "React Native Development",
+      "Flutter Development",
+      "Mobile App Development",
       "Web Development",
-      "Mobile App Development", 
       "Frontend Development",
       "Backend Development",
       "TypeScript Development",

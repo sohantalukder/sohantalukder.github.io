@@ -138,7 +138,7 @@ export default function ContactSection() {
         if (error.message.includes('Invalid grant') || error.message.includes('Gmail_API')) {
           setStatusMessage('Email service temporarily unavailable. Please try contacting me directly at mdtalukder.sohan@gmail.com');
         } else if (error.message.includes('configuration')) {
-          setStatusMessage('Email service is not properly configured. Please contact me directly at mdtalukder.sohan@gmail.com');
+          setStatusMessage('Something went wrong while sending your message. Please contact me directly at mdtalukder.sohan@gmail.com');
         } else {
           setStatusMessage('Failed to send message. Please try again or contact me directly at mdtalukder.sohan@gmail.com');
         }

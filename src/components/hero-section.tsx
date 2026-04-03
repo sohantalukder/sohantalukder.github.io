@@ -78,19 +78,29 @@ export default function HeroSection() {
                   Sohan Talukder
                 </span>
               </motion.h1>
+
+              <motion.p
+                className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto lg:mx-0"
+                variants={itemVariants}
+              >
+                Md. Sohan Talukder Akash · React Native &amp; Flutter developer · Mobile app developer in
+                Bangladesh
+              </motion.p>
               
               <motion.p 
                 className="text-xl sm:text-2xl text-muted-foreground"
                 variants={itemVariants}
               >
-                Full Stack Developer 👋
+                React Native &amp; Flutter Developer 👋
               </motion.p>
               
               <motion.p 
                 className="text-lg text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed"
                 variants={itemVariants}
               >
-                A passionate and dedicated TypeScript Developer based in Dhaka, Bangladesh. With expertise in TypeScript, I strive to create efficiently and innovative web and app solutions, constantly staying up-to-date with the latest industry trends.
+                I build cross-platform mobile apps and modern web products from Dhaka, Bangladesh—React
+                Native, Flutter, TypeScript, and React—with a focus on performance, clean architecture, and
+                shipping apps people use every day.
               </motion.p>
             </div>
 
@@ -230,9 +240,18 @@ export default function HeroSection() {
               </motion.div>
               )}
               
-              {/* Main Image with Morphing Animation */}
+              {/* Decorative portrait (CSS); real img with alt for SEO and accessibility */}
+              <img
+                src="/sohan.png"
+                alt="Md. Sohan Talukder Akash, React Native and Flutter mobile app developer in Dhaka, Bangladesh"
+                width={400}
+                height={400}
+                decoding="async"
+                className="sr-only"
+              />
               <motion.div 
                 className="hero-img mx-auto"
+                aria-hidden
                 whileHover={{ 
                   scale: 1.05,
                   transition: { duration: 0.3 }
