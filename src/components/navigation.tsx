@@ -5,6 +5,8 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Menu, X } from "lucide-react"
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
+import { easeSmooth } from "@/components/motion"
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -17,6 +19,7 @@ const navItems = [
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const reduceMotion = useReducedMotion()
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href)
@@ -27,7 +30,12 @@ export function Navigation() {
   }
 
   return (
-    <nav className="fixed top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <motion.nav
+      className="fixed top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+      initial={reduceMotion ? false : { y: -10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.4, ease: easeSmooth }}
+    >
       <div className="container max-w-7xl mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="text-xl font-bold">
@@ -61,23 +69,30 @@ export function Navigation() {
           </div>
         </div>
 
-        {/* Mobile Navigation Menu */}
-        {isOpen && (
-          <div className="md:hidden border-t">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {navItems.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left px-3 py-2 text-base font-medium rounded-md hover:bg-accent"
-                >
-                  {item.name}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              className="md:hidden border-t"
+              initial={reduceMotion ? false : { opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
+              transition={{ duration: 0.22, ease: easeSmooth }}
+            >
+              <div className="px-2 pt-2 pb-3 space-y-1">
+                {navItems.map((item) => (
+                  <button
+                    key={item.name}
+                    onClick={() => scrollToSection(item.href)}
+                    className="block w-full text-left px-3 py-2 text-base font-medium rounded-md hover:bg-accent"
+                  >
+                    {item.name}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </nav>
+    </motion.nav>
   )
 } 

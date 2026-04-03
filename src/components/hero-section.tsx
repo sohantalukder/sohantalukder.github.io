@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Github, Linkedin, MapPin, Twitter, Download, ArrowRight } from "lucide-react"
 import Link from "next/link"
-import { motion, Variants } from "framer-motion"
+import { motion, useReducedMotion, Variants } from "framer-motion"
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -41,6 +41,7 @@ const imageVariants: Variants = {
 }
 
 export default function HeroSection() {
+  const reduceMotion = useReducedMotion()
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href)
@@ -167,7 +168,8 @@ export default function HeroSection() {
             animate="visible"
           >
             <div className="relative">
-              {/* Floating particles */}
+              {/* Floating particles — hidden when reduced motion is preferred */}
+              {!reduceMotion && (
               <motion.div 
                 className="absolute -inset-4"
                 initial={{ opacity: 0 }}
@@ -226,6 +228,7 @@ export default function HeroSection() {
                   }}
                 />
               </motion.div>
+              )}
               
               {/* Main Image with Morphing Animation */}
               <motion.div 

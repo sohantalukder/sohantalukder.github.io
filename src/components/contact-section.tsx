@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle, AlertCircle } from "lucide-react";
 import emailjs from "@emailjs/browser";
+import { AnimatePresence, motion } from "framer-motion";
+import { ScrollReveal, StaggerContainer, StaggerItem, easeSmooth } from "@/components/motion";
 
 interface FormData {
   name: string;
@@ -173,15 +175,16 @@ export default function ContactSection() {
   return (
     <section id="contact" className="py-12 bg-muted/50">
       <div className="container max-w-7xl mx-auto px-4">
-        <div className="text-center mb-8">
+        <ScrollReveal className="text-center mb-8">
           <h2 className="text-2xl lg:text-3xl font-bold mb-2">Get In Touch</h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-sm">
             Let&apos;s chat and create greatness together!
           </p>
-        </div>
+        </ScrollReveal>
 
-        <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
+        <StaggerContainer className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
           {/* Contact Information */}
+          <StaggerItem>
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold mb-3">Let&apos;s Connect</h3>
@@ -240,8 +243,10 @@ export default function ContactSection() {
               </Button>
             </div>
           </div>
+          </StaggerItem>
 
           {/* Contact Form */}
+          <StaggerItem>
           <Card className="border-0 shadow-sm">
             <CardHeader className="pb-4">
               <CardTitle className="text-lg font-medium">
@@ -249,20 +254,37 @@ export default function ContactSection() {
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-0">
-              {/* Status Messages */}
-              {status === 'success' && (
-                <div className="mb-4 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-md flex items-start gap-2">
-                  <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                  <p className="text-sm text-green-700 dark:text-green-300">{statusMessage}</p>
-                </div>
-              )}
+              <AnimatePresence mode="wait">
+                {status === 'success' && (
+                  <motion.div
+                    key="success"
+                    role="status"
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.25, ease: easeSmooth }}
+                    className="mb-4 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-md flex items-start gap-2"
+                  >
+                    <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                    <p className="text-sm text-green-700 dark:text-green-300">{statusMessage}</p>
+                  </motion.div>
+                )}
               
-              {status === 'error' && (
-                <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md flex items-start gap-2">
-                  <AlertCircle className="h-4 w-4 text-red-600 dark:text-red-400 mt-0.5 flex-shrink-0" />
-                  <p className="text-sm text-red-700 dark:text-red-300">{statusMessage}</p>
-                </div>
-              )}
+                {status === 'error' && (
+                  <motion.div
+                    key="error"
+                    role="alert"
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.25, ease: easeSmooth }}
+                    className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md flex items-start gap-2"
+                  >
+                    <AlertCircle className="h-4 w-4 text-red-600 dark:text-red-400 mt-0.5 flex-shrink-0" />
+                    <p className="text-sm text-red-700 dark:text-red-300">{statusMessage}</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -349,7 +371,8 @@ export default function ContactSection() {
               </form>
             </CardContent>
           </Card>
-        </div>
+          </StaggerItem>
+        </StaggerContainer>
       </div>
     </section>
   );

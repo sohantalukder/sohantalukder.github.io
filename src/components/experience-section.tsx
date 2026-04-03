@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { CalendarDays, MapPin } from "lucide-react"
+import { ScrollReveal, StaggerContainer, StaggerItem, TiltCard } from "@/components/motion"
 
 const experiences = [
   {
@@ -41,54 +42,58 @@ export default function ExperienceSection() {
   return (
     <section id="experience" className="py-12">
       <div className="container max-w-7xl mx-auto px-4">
-        <div className="text-center mb-8">
+        <ScrollReveal className="text-center mb-8">
           <h2 className="text-2xl font-bold mb-2">Experience</h2>
           <p className="text-muted-foreground text-sm">
             My professional journey in software development
           </p>
-        </div>
+        </ScrollReveal>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4">
+        <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4">
           {experiences.map((exp, index) => (
-            <Card key={index} className="flex flex-col bg-card border border-border rounded-lg overflow-hidden hover:bg-accent/50 transition-colors">
-              <CardContent className="px-4 py-2">
-                <div className="flex justify-between items-start mb-3">
-                  <div>
-                    <h3 className="text-base font-semibold text-foreground mb-1.5">
-                      {exp.position}
-                    </h3>
-                    <div className="flex items-center gap-1.5 text-muted-foreground text-xs">
-                      <CalendarDays className="h-3.5 w-3.5" />
-                      <span>{exp.duration}</span>
-                      <span>•</span>
-                      <MapPin className="h-3.5 w-3.5" />
-                      <span>{exp.location}</span>
+            <StaggerItem key={index}>
+              <TiltCard className="h-full">
+                <Card className="flex flex-col bg-card border border-border rounded-lg overflow-hidden hover:bg-accent/50 transition-colors h-full">
+                  <CardContent className="px-4 py-2">
+                    <div className="flex justify-between items-start mb-3">
+                      <div>
+                        <h3 className="text-base font-semibold text-foreground mb-1.5">
+                          {exp.position}
+                        </h3>
+                        <div className="flex items-center gap-1.5 text-muted-foreground text-xs">
+                          <CalendarDays className="h-3.5 w-3.5" />
+                          <span>{exp.duration}</span>
+                          <span>•</span>
+                          <MapPin className="h-3.5 w-3.5" />
+                          <span>{exp.location}</span>
+                        </div>
+                      </div>
+                      <Badge className="bg-muted hover:bg-muted text-muted-foreground border-0 text-xs">
+                        {exp.company}
+                      </Badge>
                     </div>
-                  </div>
-                  <Badge className="bg-muted hover:bg-muted text-muted-foreground border-0 text-xs">
-                    {exp.company}
-                  </Badge>
-                </div>
 
-                <p className="text-muted-foreground text-sm leading-relaxed mb-3 line-clamp-2">
-                  {exp.description}
-                </p>
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-3 line-clamp-2">
+                      {exp.description}
+                    </p>
 
-                <div className="flex flex-wrap gap-1.5">
-                  {exp.tech.map((tech) => (
-                    <Badge 
-                      key={tech} 
-                      variant="secondary"
-                      className="text-[10px] px-2 py-0.5"
-                    >
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                    <div className="flex flex-wrap gap-1.5">
+                      {exp.tech.map((tech) => (
+                        <Badge 
+                          key={tech} 
+                          variant="secondary"
+                          className="text-[10px] px-2 py-0.5"
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </TiltCard>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   )

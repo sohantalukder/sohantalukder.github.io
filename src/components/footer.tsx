@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Github, Linkedin } from "lucide-react"
 import Link from "next/link"
+import { ScrollReveal } from "@/components/motion"
 
 function MediumIcon({ className }: { className?: string }) {
   return (
@@ -25,7 +26,7 @@ export function Footer() {
   return (
     <footer className="border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container max-w-7xl mx-auto px-4 py-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+        <ScrollReveal className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <span>© {currentYear} Md. Sohan Talukder Akash</span>
           </div>
@@ -47,7 +48,7 @@ export function Footer() {
               </Button>
             </Link>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </footer>
   )
