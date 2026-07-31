@@ -56,9 +56,10 @@ export function ScrollStorySection() {
           text: storySteps[activeIndex].phrase,
           chars: "lowercase",
           cursor: "_",
-          revealRate: 48,
-          settleDuration: 240,
-          perturbation: 0.12,
+          revealRate: 100,
+          settleDuration: 140,
+          settleRate: 60,
+          perturbation: 0.06,
         }),
       })
     }
@@ -106,7 +107,7 @@ export function ScrollStorySection() {
             <p id="story-title" className="text-lg text-muted-foreground sm:text-xl">
               I build by
             </p>
-            <p className="story-phrase mt-3 min-h-[2.2em] max-w-4xl text-5xl font-bold leading-[0.96] tracking-[-0.055em] lg:text-7xl">
+            <p className="story-phrase mt-3 min-h-[2.2em] max-w-4xl text-5xl font-semibold leading-[0.96] tracking-[-0.055em] lg:text-7xl">
               {storySteps[0].phrase}
             </p>
           </div>
@@ -115,7 +116,7 @@ export function ScrollStorySection() {
         <div className="story-mobile mx-auto grid max-w-7xl gap-8 px-4 py-20 md:hidden">
           <div>
             <p className="section-kicker">How I build</p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight">Four moves behind every product.</h2>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight">Four moves behind every product.</h2>
           </div>
           <ol className="divide-y divide-border border-y border-border">
             {storySteps.map((step) => (

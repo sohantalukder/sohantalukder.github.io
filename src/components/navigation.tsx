@@ -38,7 +38,7 @@ export function Navigation() {
     >
       <div className="container max-w-7xl mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
-          <Link href="#home" className="text-xl font-bold tracking-[-0.04em] transition-colors duration-200 hover:text-orange-500 focus-visible:text-orange-500">
+          <Link href="#home" className="text-xl font-semibold tracking-[-0.04em] transition-colors duration-200 hover:text-orange-500 focus-visible:text-orange-500">
             sohan.dev
           </Link>
 

@@ -55,7 +55,7 @@ export default function ExperienceSection() {
         <div className="grid gap-8 lg:grid-cols-[0.65fr_1.35fr]">
           <div className="lg:sticky lg:top-28 lg:self-start">
             <p className="section-kicker">Career timeline</p>
-            <h2 id="experience-title" className="mt-3 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
+            <h2 id="experience-title" className="mt-3 text-4xl font-medium tracking-[-0.04em] sm:text-5xl">
               Building with teams, learning through products.
             </h2>
             <p className="mt-5 max-w-md leading-7 text-muted-foreground">
@@ -81,7 +81,7 @@ export default function ExperienceSection() {
 
                 <article>
                   <p className="font-mono text-xs uppercase tracking-[0.14em] text-orange-500">{experience.company}</p>
-                  <h3 className="mt-2 text-2xl font-semibold tracking-tight">{experience.position}</h3>
+                  <h3 className="mt-2 text-2xl font-medium tracking-tight">{experience.position}</h3>
                   <p className="mt-2 inline-flex items-center gap-1.5 text-sm text-muted-foreground">
                     <MapPin className="h-3.5 w-3.5" aria-hidden />
                     {experience.location}

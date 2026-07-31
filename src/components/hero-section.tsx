@@ -15,10 +15,10 @@ export default function HeroSection() {
 
     animate(root.querySelectorAll(".hero-reveal"), {
       opacity: { from: 0 },
-      y: { from: 18 },
-      delay: stagger(85),
-      duration: 680,
-      ease: "out(4)",
+      y: { from: 12 },
+      delay: stagger(55),
+      duration: 520,
+      ease: "out(3)",
     })
 
     const portrait = root.querySelector(".editorial-portrait")
@@ -26,8 +26,8 @@ export default function HeroSection() {
       animate(portrait, {
         opacity: { from: 0 },
         clipPath: ["inset(0 0 100% 0)", "inset(0 0 0% 0)"],
-        duration: 900,
-        delay: 180,
+        duration: 720,
+        delay: 120,
         ease: "inOutCubic",
       })
     }
@@ -44,7 +44,7 @@ export default function HeroSection() {
             Software Engineer · Dhaka, Bangladesh
           </div>
 
-          <h1 className="hero-reveal mt-7 max-w-5xl text-5xl font-bold leading-[0.92] tracking-[-0.065em] sm:text-6xl lg:text-[6.4rem]">
+          <h1 className="hero-reveal mt-7 max-w-5xl text-5xl font-semibold leading-[0.92] tracking-[-0.065em] sm:text-6xl lg:text-[6.4rem]">
             <span className="mb-5 block font-mono text-sm font-medium uppercase tracking-[0.16em] text-muted-foreground sm:text-base">
               {siteConfig.primaryName}
             </span>
@@ -86,7 +86,7 @@ export default function HeroSection() {
 
         <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
           <figure className="editorial-portrait relative w-full max-w-[24rem]">
-            <div className="editorial-portrait-frame relative aspect-[4/5] overflow-hidden border border-border bg-muted">
+            <div className="editorial-portrait-frame relative aspect-[4/5] overflow-hidden border border-border bg-transparent">
               <Image
                 src={siteConfig.images.portrait}
                 alt={`${siteConfig.primaryName}, Software Engineer and Mobile Developer`}

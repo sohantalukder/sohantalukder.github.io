@@ -77,7 +77,7 @@ export function TechStackSection() {
         <div className="grid gap-8 border-b border-border pb-10 lg:grid-cols-[0.65fr_1.35fr] lg:items-end">
           <div>
             <p className="section-kicker">Working stack</p>
-            <h2 id="tech-stack-title" className="mt-3 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
+            <h2 id="tech-stack-title" className="mt-3 text-4xl font-medium tracking-[-0.04em] sm:text-5xl">
               Tools chosen for the product, not the trend.
             </h2>
           </div>
@@ -93,7 +93,7 @@ export function TechStackSection() {
               className="border-b border-border py-8 md:border-r md:px-7 md:[&:nth-child(2n)]:border-r-0 xl:border-b-0 xl:[&:nth-child(2n)]:border-r xl:[&:last-child]:border-r-0"
             >
               <p className="font-mono text-xs text-orange-500">{String(groupIndex + 1).padStart(2, "0")}</p>
-              <h3 className="mt-4 text-xl font-semibold">{group.title}</h3>
+              <h3 className="mt-4 text-xl font-medium">{group.title}</h3>
               <p className="mt-2 min-h-12 text-sm leading-6 text-muted-foreground">{group.description}</p>
               <ul className="mt-7 space-y-1" aria-label={`${group.title} technologies`}>
                 {group.technologies.map(({ name, icon: Icon }) => (

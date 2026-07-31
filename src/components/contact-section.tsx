@@ -156,7 +156,7 @@ export default function ContactSection() {
         <div className="grid gap-14 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
           <div>
             <p className="section-kicker">Start a conversation</p>
-            <h2 id="contact-title" className="mt-4 max-w-xl text-4xl font-semibold leading-[1.02] tracking-[-0.045em] sm:text-6xl">
+            <h2 id="contact-title" className="mt-4 max-w-xl text-4xl font-medium leading-[1.02] tracking-[-0.045em] sm:text-6xl">
               Have a useful product in mind?
             </h2>
             <p className="mt-6 max-w-lg text-base leading-7 text-muted-foreground sm:text-lg">
@@ -177,7 +177,7 @@ export default function ContactSection() {
 
           <div className="border-t border-border pt-8 lg:pt-10">
             <div className="mb-8 flex items-baseline justify-between gap-4">
-              <h3 className="text-xl font-semibold">Send a message</h3>
+              <h3 className="text-xl font-medium">Send a message</h3>
               <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">Usually replies within 1–2 days</span>
             </div>
 

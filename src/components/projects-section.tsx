@@ -84,7 +84,7 @@ export function ProjectsSection() {
         <div className="grid gap-8 border-b border-border pb-10 lg:grid-cols-[0.65fr_1.35fr] lg:items-end">
           <div>
             <p className="section-kicker">Selected work</p>
-            <h2 id="projects-title" className="mt-3 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
+            <h2 id="projects-title" className="mt-3 text-4xl font-medium tracking-[-0.04em] sm:text-5xl">
               Products built for real-world use.
             </h2>
           </div>
@@ -105,7 +105,7 @@ export function ProjectsSection() {
               </div>
 
               <div>
-                <h3 className="text-2xl font-semibold tracking-tight sm:text-3xl">{project.name}</h3>
+                <h3 className="text-2xl font-medium tracking-tight sm:text-3xl">{project.name}</h3>
                 <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-2" aria-label={`${project.name} technologies`}>
                   {project.technology.map((tech) => (
                     <li key={tech} className="font-mono text-[11px] uppercase tracking-[0.08em] text-foreground/65">

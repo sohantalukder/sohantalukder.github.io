@@ -35,7 +35,7 @@ export function BlogPostGrid({ posts }: { posts: BlogPost[] }) {
             >
               <span className="font-mono text-xs text-muted-foreground">{String(index + 1).padStart(2, "0")}</span>
               <div>
-                <h3 className="max-w-3xl text-xl font-semibold leading-snug tracking-tight transition-colors duration-200 group-hover:text-orange-600 group-focus-within:text-orange-600 sm:text-2xl">
+                <h3 className="max-w-3xl text-xl font-medium leading-snug tracking-tight transition-colors duration-200 group-hover:text-orange-600 group-focus-within:text-orange-600 sm:text-2xl">
                   {post.title}
                 </h3>
                 {post.description ? (

@@ -136,7 +136,7 @@
   color: var(--portfolio-accent);
   font-family: var(--font-geist-mono), monospace;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }

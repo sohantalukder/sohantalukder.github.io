@@ -20,7 +20,7 @@ function BlogShell({ children }: { children: ReactNode }) {
         <div className="grid gap-8 pb-10 lg:grid-cols-[0.65fr_1.35fr] lg:items-end">
           <div>
             <p className="section-kicker">Writing</p>
-            <h2 id="blog-title" className="mt-3 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">Notes from the work.</h2>
+            <h2 id="blog-title" className="mt-3 text-4xl font-medium tracking-[-0.04em] sm:text-5xl">Notes from the work.</h2>
           </div>
           <p className="max-w-2xl leading-7 text-muted-foreground lg:justify-self-end lg:text-lg">
             Practical thoughts on mobile development, engineering decisions, and building better product experiences.

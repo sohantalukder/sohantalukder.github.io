@@ -16,7 +16,7 @@ export default function AboutSection() {
 
         <StaggerContainer className="grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           <StaggerItem>
-            <h2 id="about-title" className="text-3xl font-semibold leading-tight tracking-[-0.04em] sm:text-4xl lg:text-5xl">
+            <h2 id="about-title" className="text-3xl font-medium leading-tight tracking-[-0.04em] sm:text-4xl lg:text-5xl">
               Engineering products from idea to{" "}
               <span className="text-gradient">everyday use.</span>
             </h2>
@@ -44,7 +44,7 @@ export default function AboutSection() {
           {highlights.map((highlight) => (
             <StaggerItem key={highlight.label}>
               <div className="h-full bg-background p-6 sm:p-7">
-                <p className="font-mono text-2xl font-bold text-orange-500">
+                <p className="font-mono text-2xl font-semibold text-orange-500">
                   {highlight.value}
                 </p>
                 <p className="mt-1 text-sm text-muted-foreground">{highlight.label}</p>
