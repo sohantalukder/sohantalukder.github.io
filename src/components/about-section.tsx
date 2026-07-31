@@ -1,54 +1,56 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/motion"
 
-const skills = [
-  "JavaScript", "TypeScript", "React", "React Native", "Swift", "Flutter", "Dart","Next.js", "Node.js", 
-  "MongoDB", "Git", "AWS", "Docker", "CI/CD", 
+const highlights = [
+  { value: "4+", label: "Years shipping software" },
+  { value: "iOS", label: "Native-feel experiences" },
+  { value: "Android", label: "Production mobile apps" },
 ]
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-12 bg-white dark:bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollReveal className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-black dark:text-white mb-2">About Me</h2>
-          <div className="h-0.5 w-12 bg-black dark:bg-white mx-auto"></div>
+    <section id="about" aria-labelledby="about-title" className="relative py-20 sm:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <ScrollReveal className="mb-10">
+          <p className="section-kicker">About me</p>
         </ScrollReveal>
 
-        <StaggerContainer className="grid md:grid-cols-2 gap-8">
+        <StaggerContainer className="grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           <StaggerItem>
-            <div>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-                I&apos;m a JavaScript and TypeScript developer with 3+ years of experience building mobile and web
-                applications from Bangladesh. I focus on React Native and Flutter for iOS and Android, plus
-                React and Next.js for the web—clean architecture and maintainable code.
+            <h2 id="about-title" className="text-3xl font-semibold leading-tight tracking-[-0.04em] sm:text-4xl lg:text-5xl">
+              Engineering products from idea to{" "}
+              <span className="text-gradient">everyday use.</span>
+            </h2>
+          </StaggerItem>
+
+          <StaggerItem>
+            <div className="space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
+              <p>
+                I&apos;m a JavaScript and TypeScript developer based in Bangladesh
+                with 4+ years of experience building mobile and web applications.
+                I focus on React Native and Flutter for iOS and Android, plus React
+                and Next.js for the web.
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Passionate about shipping reliable apps, learning new tools, and contributing to open-source when
-                I can.
+              <p>
+                I care about clean architecture, maintainable code, reliable
+                releases, and interfaces that feel considered. I&apos;m always
+                learning, contributing to open source, and looking for better ways
+                to turn complex requirements into simple product experiences.
               </p>
             </div>
           </StaggerItem>
+        </StaggerContainer>
 
-          <StaggerItem>
-            <Card className="bg-gray-50 dark:bg-gray-900 border-gray-200 dark:border-gray-700 h-full">
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold mb-4 text-black dark:text-white">Skills</h3>
-                <div className="flex flex-wrap gap-2">
-                  {skills.map((skill) => (
-                    <Badge 
-                      key={skill} 
-                      variant="secondary"
-                      className="bg-white dark:bg-black border border-gray-200 dark:border-gray-700 text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </StaggerItem>
+        <StaggerContainer className="mt-12 grid gap-px border-y border-border bg-border sm:grid-cols-3">
+          {highlights.map((highlight) => (
+            <StaggerItem key={highlight.label}>
+              <div className="h-full bg-background p-6 sm:p-7">
+                <p className="font-mono text-2xl font-bold text-orange-500">
+                  {highlight.value}
+                </p>
+                <p className="mt-1 text-sm text-muted-foreground">{highlight.label}</p>
+              </div>
+            </StaggerItem>
+          ))}
         </StaggerContainer>
       </div>
     </section>

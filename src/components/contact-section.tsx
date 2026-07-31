@@ -1,379 +1,242 @@
 "use client"
-import React, { useState, useRef } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle, AlertCircle } from "lucide-react";
-import emailjs from "@emailjs/browser";
-import { AnimatePresence, motion } from "framer-motion";
-import { ScrollReveal, StaggerContainer, StaggerItem, easeSmooth } from "@/components/motion";
+
+import React, { useRef, useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { AlertCircle, CheckCircle, Github, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react"
+import emailjs from "@emailjs/browser"
+import { AnimatePresence, motion } from "framer-motion"
+import { easeSmooth } from "@/components/motion"
 
 interface FormData {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
+  name: string
+  email: string
+  subject: string
+  message: string
 }
 
 interface FormErrors {
-  name?: string;
-  email?: string;
-  subject?: string;
-  message?: string;
+  name?: string
+  email?: string
+  subject?: string
+  message?: string
 }
 
 const initialState: FormData = {
   name: "",
   email: "",
   subject: "",
-  message: ""
-};
+  message: "",
+}
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState<FormData>(initialState);
-  const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [statusMessage, setStatusMessage] = useState('');
-  const formRef = useRef<HTMLFormElement>(null);
+  const [formData, setFormData] = useState<FormData>(initialState)
+  const [loading, setLoading] = useState(false)
+  const [errors, setErrors] = useState<FormErrors>({})
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle")
+  const [statusMessage, setStatusMessage] = useState("")
+  const formRef = useRef<HTMLFormElement>(null)
 
-  // Initialize EmailJS (should be done once when component mounts)
   React.useEffect(() => {
-    // Initialize EmailJS with your public key
     if (process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY) {
-      emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
+      emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY)
     }
-  }, []);
+  }, [])
 
   const validateForm = (): boolean => {
-    const newErrors: FormErrors = {};
-    
+    const newErrors: FormErrors = {}
+
     if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
+      newErrors.name = "Name is required"
     } else if (formData.name.trim().length < 2) {
-      newErrors.name = "Name must be at least 2 characters";
+      newErrors.name = "Name must be at least 2 characters"
     }
-    
+
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
+      newErrors.email = "Email is required"
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
+      newErrors.email = "Please enter a valid email address"
     }
-    
+
     if (!formData.subject.trim()) {
-      newErrors.subject = "Subject is required";
+      newErrors.subject = "Subject is required"
     } else if (formData.subject.trim().length < 5) {
-      newErrors.subject = "Subject must be at least 5 characters";
+      newErrors.subject = "Subject must be at least 5 characters"
     }
-    
+
     if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
+      newErrors.message = "Message is required"
     } else if (formData.message.trim().length < 10) {
-      newErrors.message = "Message must be at least 10 characters";
+      newErrors.message = "Message must be at least 10 characters"
     }
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    
-    // Reset status
-    setStatus('idle');
-    setStatusMessage('');
-    
-    // Validate form
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    setStatus("idle")
+    setStatusMessage("")
+
     if (!validateForm()) {
-      setStatus('error');
-      setStatusMessage('Please fix the errors below');
-      return;
+      setStatus("error")
+      setStatusMessage("Please fix the errors below")
+      return
     }
 
-    setLoading(true);
-    
+    setLoading(true)
+
     try {
-      // Check if environment variables are available
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_KEY;
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_KEY
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
 
       if (!serviceId || !templateId || !publicKey) {
-        throw new Error('EmailJS configuration is missing. Please check your environment variables.');
+        throw new Error("EmailJS configuration is missing. Please check your environment variables.")
       }
 
-      // Prepare email data
       const emailData = {
         from_name: formData.name.trim(),
         from_email: formData.email.trim(),
         subject: formData.subject.trim(),
         message: formData.message.trim(),
-        to_name: "Sohan Talukder", // Your name
+        to_name: "Sohan Talukder",
         reply_to: formData.email.trim(),
-      };
-      
-      // Send email using EmailJS
-      const response = await emailjs.send(
-        serviceId,
-        templateId,
-        emailData,
-        publicKey
-      );
+      }
+
+      const response = await emailjs.send(serviceId, templateId, emailData, publicKey)
 
       if (response.status === 200) {
-        setFormData(initialState);
-        setErrors({});
-        setStatus('success');
-        setStatusMessage('Thank you! Your message has been sent successfully. I\'ll get back to you soon.');
+        setFormData(initialState)
+        setErrors({})
+        setStatus("success")
+        setStatusMessage("Thank you! Your message has been sent successfully. I'll get back to you soon.")
       } else {
-        throw new Error('Failed to send message');
+        throw new Error("Failed to send message")
       }
-      
     } catch (error) {
-      console.error('Email send error:', error);
-      setStatus('error');
-      
+      console.error("Email send error:", error)
+      setStatus("error")
+
       if (error instanceof Error) {
-        if (error.message.includes('Invalid grant') || error.message.includes('Gmail_API')) {
-          setStatusMessage('Email service temporarily unavailable. Please try contacting me directly at mdtalukder.sohan@gmail.com');
-        } else if (error.message.includes('configuration')) {
-          setStatusMessage('Something went wrong while sending your message. Please contact me directly at mdtalukder.sohan@gmail.com');
+        if (error.message.includes("Invalid grant") || error.message.includes("Gmail_API")) {
+          setStatusMessage("Email service temporarily unavailable. Please try contacting me directly at mdtalukder.sohan@gmail.com")
+        } else if (error.message.includes("configuration")) {
+          setStatusMessage("Something went wrong while sending your message. Please contact me directly at mdtalukder.sohan@gmail.com")
         } else {
-          setStatusMessage('Failed to send message. Please try again or contact me directly at mdtalukder.sohan@gmail.com');
+          setStatusMessage("Failed to send message. Please try again or contact me directly at mdtalukder.sohan@gmail.com")
         }
       } else {
-        setStatusMessage('An unexpected error occurred. Please try contacting me directly at mdtalukder.sohan@gmail.com');
+        setStatusMessage("An unexpected error occurred. Please try contacting me directly at mdtalukder.sohan@gmail.com")
       }
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    
-    // Clear specific error when user starts typing
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target
+    setFormData((previous) => ({ ...previous, [name]: value }))
+
     if (errors[name as keyof FormErrors]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: undefined
-      }));
+      setErrors((previous) => ({ ...previous, [name]: undefined }))
     }
-    
-    // Clear status when user starts editing
-    if (status !== 'idle') {
-      setStatus('idle');
-      setStatusMessage('');
+
+    if (status !== "idle") {
+      setStatus("idle")
+      setStatusMessage("")
     }
-  };
+  }
 
   return (
-    <section id="contact" className="py-12 bg-muted/50">
-      <div className="container max-w-7xl mx-auto px-4">
-        <ScrollReveal className="text-center mb-8">
-          <h2 className="text-2xl lg:text-3xl font-bold mb-2">Get In Touch</h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-sm">
-            Let&apos;s chat and create greatness together!
-          </p>
-        </ScrollReveal>
+    <section id="contact" aria-labelledby="contact-title" className="border-t border-border bg-muted/20 py-20 sm:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-14 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
+          <div>
+            <p className="section-kicker">Start a conversation</p>
+            <h2 id="contact-title" className="mt-4 max-w-xl text-4xl font-semibold leading-[1.02] tracking-[-0.045em] sm:text-6xl">
+              Have a useful product in mind?
+            </h2>
+            <p className="mt-6 max-w-lg text-base leading-7 text-muted-foreground sm:text-lg">
+              I&apos;m open to thoughtful mobile products, design-system work, and engineering conversations. Tell me what you&apos;re building.
+            </p>
 
-        <StaggerContainer className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
-          {/* Contact Information */}
-          <StaggerItem>
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-lg font-semibold mb-3">Let&apos;s Connect</h3>
-              <p className="text-muted-foreground mb-4 text-sm">
-                I&apos;m always open to discussing new opportunities and interesting projects.
-              </p>
-            </div>
+            <address className="mt-10 flex flex-col items-start gap-4 not-italic text-sm">
+              <a href="mailto:mdtalukder.sohan@gmail.com" className="editorial-link"><Mail className="h-4 w-4" aria-hidden />mdtalukder.sohan@gmail.com</a>
+              <a href="tel:+8801865748726" className="editorial-link"><Phone className="h-4 w-4" aria-hidden />+880 1865-748726</a>
+              <p className="flex items-center gap-2 text-muted-foreground"><MapPin className="h-4 w-4 text-orange-500" aria-hidden />Mirpur, Dhaka</p>
+            </address>
 
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <MapPin className="h-4 w-4 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-medium text-sm">Address</h4>
-                  <p className="text-muted-foreground text-sm">Mirpur, Dhaka</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <Phone className="h-4 w-4 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-medium text-sm">Contact Number</h4>
-                  <p className="text-muted-foreground text-sm">+8801865748726</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <Mail className="h-4 w-4 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-medium text-sm">Email</h4>
-                  <p className="text-muted-foreground text-sm">mdtalukder.sohan@gmail.com</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex gap-3 pt-4">
-              <Button variant="outline" size="sm" asChild>
-                <a href="https://github.com/sohantalukder" target="_blank" rel="noopener noreferrer">
-                  <Github className="h-4 w-4" />
-                </a>
-              </Button>
-              <Button variant="outline" size="sm" asChild>
-                <a href="https://linkedin.com/in/sohantalukder" target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="h-4 w-4" />
-                </a>
-              </Button>
-              <Button variant="outline" size="sm" asChild>
-                <a href="mailto:mdtalukder.sohan@gmail.com">
-                  <Mail className="h-4 w-4" />
-                </a>
-              </Button>
+            <div className="mt-8 flex gap-5 text-sm">
+              <a href="https://github.com/sohantalukder" target="_blank" rel="noopener noreferrer" className="editorial-link"><Github className="h-4 w-4" aria-hidden />GitHub</a>
+              <a href="https://linkedin.com/in/sohantalukder" target="_blank" rel="noopener noreferrer" className="editorial-link"><Linkedin className="h-4 w-4" aria-hidden />LinkedIn</a>
             </div>
           </div>
-          </StaggerItem>
 
-          {/* Contact Form */}
-          <StaggerItem>
-          <Card className="border-0 shadow-sm">
-            <CardHeader className="pb-4">
-              <CardTitle className="text-lg font-medium">
-                Say Something
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="pt-0">
-              <AnimatePresence mode="wait">
-                {status === 'success' && (
-                  <motion.div
-                    key="success"
-                    role="status"
-                    initial={{ opacity: 0, y: -6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -4 }}
-                    transition={{ duration: 0.25, ease: easeSmooth }}
-                    className="mb-4 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-md flex items-start gap-2"
-                  >
-                    <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                    <p className="text-sm text-green-700 dark:text-green-300">{statusMessage}</p>
-                  </motion.div>
-                )}
-              
-                {status === 'error' && (
-                  <motion.div
-                    key="error"
-                    role="alert"
-                    initial={{ opacity: 0, y: -6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -4 }}
-                    transition={{ duration: 0.25, ease: easeSmooth }}
-                    className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md flex items-start gap-2"
-                  >
-                    <AlertCircle className="h-4 w-4 text-red-600 dark:text-red-400 mt-0.5 flex-shrink-0" />
-                    <p className="text-sm text-red-700 dark:text-red-300">{statusMessage}</p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+          <div className="border-t border-border pt-8 lg:pt-10">
+            <div className="mb-8 flex items-baseline justify-between gap-4">
+              <h3 className="text-xl font-semibold">Send a message</h3>
+              <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">Usually replies within 1–2 days</span>
+            </div>
 
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  <div>
-                    <Input
-                      name="name"
-                      placeholder="Name *"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className={`h-9 border-0 border-b rounded-none px-2 focus-visible:ring-0 focus-visible:border-primary bg-transparent text-sm ${
-                        errors.name ? 'border-red-500 focus-visible:border-red-500' : ''
-                      }`}
-                    />
-                    {errors.name && (
-                      <p className="text-red-500 text-xs mt-1">{errors.name}</p>
-                    )}
-                  </div>
-                  <div>
-                    <Input
-                      name="email"
-                      type="email"
-                      placeholder="Email *"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className={`h-9 border-0 border-b rounded-none px-2 focus-visible:ring-0 focus-visible:border-primary bg-transparent text-sm ${
-                        errors.email ? 'border-red-500 focus-visible:border-red-500' : ''
-                      }`}
-                    />
-                    {errors.email && (
-                      <p className="text-red-500 text-xs mt-1">{errors.email}</p>
-                    )}
-                  </div>
-                </div>
-                
-                <div>
-                  <Input
-                    name="subject"
-                    placeholder="Subject *"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className={`h-9 border-0 border-b rounded-none px-2 focus-visible:ring-0 focus-visible:border-primary bg-transparent text-sm ${
-                      errors.subject ? 'border-red-500 focus-visible:border-red-500' : ''
-                    }`}
-                  />
-                  {errors.subject && (
-                    <p className="text-red-500 text-xs mt-1">{errors.subject}</p>
-                  )}
-                </div>
-                
-                <div>
-                  <Textarea
-                    name="message"
-                    placeholder="Message *"
-                    rows={5}
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    className={`border-0 border-b rounded-none px-2 py-2 focus-visible:ring-0 focus-visible:border-primary bg-transparent resize-none text-sm ${
-                      errors.message ? 'border-red-500 focus-visible:border-red-500' : ''
-                    }`}
-                  />
-                  {errors.message && (
-                    <p className="text-red-500 text-xs mt-1">{errors.message}</p>
-                  )}
-                </div>
-                
-                <Button 
-                  type="submit" 
-                  disabled={loading}
-                  className="w-32 h-9 bg-primary hover:bg-primary/90 text-primary-foreground font-medium text-sm cursor-pointer"
+            <AnimatePresence mode="wait">
+              {status !== "idle" && (
+                <motion.div
+                  key={status}
+                  role={status === "error" ? "alert" : "status"}
+                  initial={{ opacity: 0, y: -6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -4 }}
+                  transition={{ duration: 0.2, ease: easeSmooth }}
+                  className={`mb-7 flex items-start gap-2 border px-4 py-3 text-sm ${
+                    status === "success"
+                      ? "border-green-600/30 bg-green-600/5 text-green-700 dark:text-green-300"
+                      : "border-destructive/30 bg-destructive/5 text-destructive"
+                  }`}
                 >
-                  {loading ? (
-                    <div className="animate-spin rounded-full h-3 w-3 border-2 border-background border-t-transparent"></div>
-                  ) : (
-                    <>
-                      <Send className="mr-1 h-3 w-3" />
-                      Send
-                    </>
-                  )}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-          </StaggerItem>
-        </StaggerContainer>
+                  {status === "success" ? <CheckCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden /> : <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />}
+                  <p>{statusMessage}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-7" noValidate>
+              <div className="grid gap-7 sm:grid-cols-2">
+                <Field label="Name" error={errors.name} id="contact-name">
+                  <Input id="contact-name" name="name" autoComplete="name" value={formData.name} onChange={handleChange} aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "contact-name-error" : undefined} className="contact-input" />
+                </Field>
+                <Field label="Email" error={errors.email} id="contact-email">
+                  <Input id="contact-email" name="email" type="email" autoComplete="email" value={formData.email} onChange={handleChange} aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "contact-email-error" : undefined} className="contact-input" />
+                </Field>
+              </div>
+
+              <Field label="Subject" error={errors.subject} id="contact-subject">
+                <Input id="contact-subject" name="subject" value={formData.subject} onChange={handleChange} aria-invalid={Boolean(errors.subject)} aria-describedby={errors.subject ? "contact-subject-error" : undefined} className="contact-input" />
+              </Field>
+
+              <Field label="Message" error={errors.message} id="contact-message">
+                <Textarea id="contact-message" name="message" rows={6} value={formData.message} onChange={handleChange} aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? "contact-message-error" : undefined} className="contact-input resize-none" />
+              </Field>
+
+              <Button type="submit" size="lg" disabled={loading} className="min-w-36">
+                {loading ? <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" aria-label="Sending" /> : <><Send className="h-4 w-4" aria-hidden />Send message</>}
+              </Button>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
-  );
+  )
+}
+
+function Field({ label, error, id, children }: { label: string; error?: string; id: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <label htmlFor={id} className="mb-2 block font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground">{label} *</label>
+      {children}
+      {error ? <p id={`${id}-error`} className="mt-2 text-xs text-destructive">{error}</p> : null}
+    </div>
+  )
 }

@@ -45,6 +45,9 @@
 
 :root {
   --radius: 0.625rem;
+  --portfolio-accent: oklch(0.72 0.18 55);
+  --portfolio-accent-soft: oklch(0.72 0.18 55 / 14%);
+  --portfolio-grid-dot: oklch(0.25 0.01 285 / 12%);
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);
   --card: oklch(1 0 0);
@@ -79,6 +82,9 @@
 }
 
 .dark {
+  --portfolio-accent: oklch(0.78 0.17 65);
+  --portfolio-accent-soft: oklch(0.78 0.17 65 / 13%);
+  --portfolio-grid-dot: oklch(0.92 0.01 285 / 10%);
   --background: oklch(0.141 0.005 285.823);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.21 0.006 285.885);
@@ -118,11 +124,147 @@
   }
   body {
     @apply bg-background text-foreground;
+    overflow-x: clip;
   }
   
   html {
     scroll-behavior: smooth;
   }
+}
+
+.section-kicker {
+  color: var(--portfolio-accent);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.editorial-grid {
+  background-image:
+    linear-gradient(to right, var(--portfolio-grid-dot) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--portfolio-grid-dot) 1px, transparent 1px);
+  background-position: center;
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, black 12%, black 76%, transparent 100%);
+}
+
+.editorial-portrait-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0.8rem;
+  border: 1px solid color-mix(in oklab, var(--portfolio-accent) 22%, transparent);
+  pointer-events: none;
+}
+
+.editorial-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--muted-foreground);
+  text-decoration-color: transparent;
+  text-underline-offset: 0.3rem;
+  transition: color 180ms ease, text-decoration-color 180ms ease;
+}
+
+.editorial-link:hover,
+.editorial-link:focus-visible {
+  color: var(--portfolio-accent);
+  text-decoration-line: underline;
+  text-decoration-color: color-mix(in oklab, var(--portfolio-accent) 55%, transparent);
+}
+
+.editorial-arrow {
+  transition: transform 180ms ease, color 180ms ease;
+}
+
+:is(a, button):hover .editorial-arrow,
+:is(a, button):focus-visible .editorial-arrow,
+.group:hover .editorial-arrow,
+.group:focus-within .editorial-arrow {
+  transform: translate(4px, -4px);
+}
+
+.story-scroll-shell {
+  position: relative;
+}
+
+.story-stage {
+  background: var(--background);
+}
+
+.story-marker {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  border-left: 1px solid var(--border);
+  padding: 0.45rem 0 0.45rem 1rem;
+  color: var(--muted-foreground);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: border-color 180ms ease, color 180ms ease;
+}
+
+.story-marker[data-active="true"] {
+  border-left-color: var(--portfolio-accent);
+  color: var(--foreground);
+}
+
+.custom-cursor {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 120ms ease;
+}
+
+.custom-cursor[data-visible="false"],
+.custom-cursor[data-hidden="true"] {
+  opacity: 0;
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: block;
+  border-radius: 9999px;
+  will-change: transform;
+}
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--portfolio-accent);
+}
+
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1px solid color-mix(in oklab, var(--portfolio-accent) 72%, transparent);
+}
+
+.contact-input {
+  min-height: 2.75rem;
+  border-width: 0 0 1px !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  box-shadow: none !important;
+}
+
+.contact-input:focus-visible {
+  border-color: var(--portfolio-accent) !important;
+  outline: none !important;
+}
+
+.contact-input[aria-invalid="true"] {
+  border-color: var(--destructive) !important;
 }
 
 @layer utilities {
@@ -152,43 +294,79 @@
     overflow: hidden;
   }
   
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.custom-cursor-enabled,
+  body.custom-cursor-enabled a,
+  body.custom-cursor-enabled button,
+  body.custom-cursor-enabled [role="button"] {
+    cursor: none;
+  }
+
+  body.custom-cursor-enabled input,
+  body.custom-cursor-enabled textarea,
+  body.custom-cursor-enabled select,
+  body.custom-cursor-enabled [contenteditable="true"] {
+    cursor: text;
   }
 }
 
-.hero-img {
-  background-image: url("/sohan.png");
-  width: 25rem;
-  height: 25rem;
-  background-size: cover;
-  background-position: contain;
-  background-repeat: no-repeat;
-  border: 3px solid #767676;
-  animation: morph 8s ease-in-out infinite;
-  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  position: relative;
-  transition: all 1s ease-in-out;
-  background-color: #ffb80d;
-}
-@media (max-width: 500px) {
-  .hero-img {
-      width: 20rem;
-      height: 20rem;
+@media (min-width: 768px) {
+  .story-scroll-shell {
+    min-height: 320vh;
+  }
+
+  .story-stage {
+    min-height: 100svh;
+    position: sticky;
+    top: 0;
   }
 }
-@keyframes morph {
-  0% {
-      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor {
+    display: none;
   }
-  50% {
-      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-  100% {
-      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .custom-cursor {
+    display: none !important;
+  }
+
+  body.custom-cursor-enabled,
+  body.custom-cursor-enabled * {
+    cursor: auto !important;
+  }
+
+  .story-scroll-shell {
+    min-height: 0;
+  }
+
+  .story-stage {
+    min-height: auto;
+    position: static;
+  }
+
+  .story-desktop {
+    display: none !important;
+  }
+
+  .story-mobile {
+    display: grid !important;
   }
 }

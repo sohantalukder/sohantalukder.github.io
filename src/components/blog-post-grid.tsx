@@ -1,17 +1,6 @@
-"use client"
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { ExternalLink, Calendar, Clock } from "lucide-react"
+import { ArrowUpRight, Calendar, Clock } from "lucide-react"
 import Link from "next/link"
 import type { BlogPost } from "@/lib/medium-rss"
-import {
-  ScrollReveal,
-  StaggerContainer,
-  StaggerItem,
-  TiltCard,
-} from "@/components/motion"
 
 function formatDate(dateString: string) {
   try {
@@ -35,80 +24,45 @@ function calculateReadTime(description: string) {
 export function BlogPostGrid({ posts }: { posts: BlogPost[] }) {
   return (
     <>
-      <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="border-t border-border">
         {posts.map((post, index) => (
-          <StaggerItem key={post.guid || String(index)}>
-            <TiltCard className="h-full">
-              <Card className="group hover:shadow-md transition-shadow duration-300 h-full flex flex-col">
-                <CardHeader className="pb-2 pt-4 px-4">
-                  <CardTitle className="text-base leading-tight line-clamp-2 group-hover:text-primary transition-colors">
-                    {post.title}
-                  </CardTitle>
-                  <div className="flex items-center gap-3 text-xs text-muted-foreground mt-1">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-3 w-3" />
-                      <span>{formatDate(post.pubDate)}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="h-3 w-3" />
-                      <span>{calculateReadTime(post.description)}</span>
-                    </div>
-                  </div>
-                </CardHeader>
-
-                <CardContent className="space-y-3 px-4 pb-4 flex-1 flex flex-col">
-                  {post.description ? (
-                    <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed">
-                      {post.description}
-                    </p>
-                  ) : null}
-
-                  <div className="flex flex-wrap gap-1">
-                    {post.categories.slice(0, 2).map((category, catIndex) => (
-                      <Badge
-                        key={catIndex}
-                        variant="secondary"
-                        className="text-[10px] px-1.5 py-0.5 font-medium"
-                      >
-                        {category}
-                      </Badge>
-                    ))}
-                  </div>
-
-                  <Link
-                    href={post.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block mt-auto"
-                  >
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="w-full h-7 text-xs cursor-pointer transition-colors group-hover:bg-primary group-hover:text-primary-foreground hover:bg-primary hover:text-primary-foreground dark:hover:bg-primary dark:hover:text-primary-foreground"
-                    >
-                      <ExternalLink className="mr-1.5 h-3 w-3" />
-                      Read on Medium
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
-            </TiltCard>
-          </StaggerItem>
+          <article key={post.guid || String(index)} className="group border-b border-border py-7 sm:py-9">
+            <Link
+              href={post.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="grid gap-5 rounded-sm outline-none sm:grid-cols-[4rem_1fr_auto] sm:items-start"
+            >
+              <span className="font-mono text-xs text-muted-foreground">{String(index + 1).padStart(2, "0")}</span>
+              <div>
+                <h3 className="max-w-3xl text-xl font-semibold leading-snug tracking-tight transition-colors duration-200 group-hover:text-orange-600 group-focus-within:text-orange-600 sm:text-2xl">
+                  {post.title}
+                </h3>
+                {post.description ? (
+                  <p className="mt-3 line-clamp-2 max-w-3xl text-sm leading-6 text-muted-foreground">
+                    {post.description}
+                  </p>
+                ) : null}
+                <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+                  <span className="inline-flex items-center gap-1.5"><Calendar className="h-3.5 w-3.5" aria-hidden />{formatDate(post.pubDate)}</span>
+                  <span className="inline-flex items-center gap-1.5"><Clock className="h-3.5 w-3.5" aria-hidden />{calculateReadTime(post.description)}</span>
+                  {post.categories.slice(0, 2).map((category) => (
+                    <span key={category} className="font-mono uppercase tracking-[0.08em]">{category}</span>
+                  ))}
+                </div>
+              </div>
+              <ArrowUpRight className="editorial-arrow mt-0.5 h-5 w-5 text-muted-foreground group-hover:text-orange-500 group-focus-within:text-orange-500" aria-hidden />
+            </Link>
+          </article>
         ))}
-      </StaggerContainer>
+      </div>
 
-      <ScrollReveal className="text-center mt-8" delay={0.06}>
-        <Link
-          href="https://sohantalukder.medium.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Button variant="outline" size="default" className="px-6 text-sm">
-            <ExternalLink className="mr-2 h-4 w-4" />
-            View All Posts on Medium
-          </Button>
+      <div className="mt-10 flex justify-end">
+        <Link href="https://sohantalukder.medium.com/" target="_blank" rel="noopener noreferrer" className="editorial-link">
+          View all posts on Medium
+          <ArrowUpRight className="editorial-arrow h-4 w-4" aria-hidden />
         </Link>
-      </ScrollReveal>
+      </div>
     </>
   )
 }

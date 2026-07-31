@@ -24,7 +24,7 @@ export function Navigation() {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href)
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      element.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" })
     }
     setIsOpen(false)
   }
@@ -38,7 +38,7 @@ export function Navigation() {
     >
       <div className="container max-w-7xl mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="text-xl font-bold">
+          <Link href="#home" className="text-xl font-bold tracking-[-0.04em] transition-colors duration-200 hover:text-orange-500 focus-visible:text-orange-500">
             sohan.dev
           </Link>
 
@@ -48,7 +48,7 @@ export function Navigation() {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="text-sm font-medium transition-colors hover:text-primary cursor-pointer"
+                className="cursor-pointer text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-orange-500 focus-visible:text-orange-500"
               >
                 {item.name}
               </button>
@@ -63,6 +63,9 @@ export function Navigation() {
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(!isOpen)}
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
+              aria-label={isOpen ? "Close navigation" : "Open navigation"}
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
@@ -72,7 +75,8 @@ export function Navigation() {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              className="md:hidden border-t"
+              id="mobile-navigation"
+              className="border-t md:hidden"
               initial={reduceMotion ? false : { opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
@@ -83,7 +87,7 @@ export function Navigation() {
                   <button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}
-                    className="block w-full text-left px-3 py-2 text-base font-medium rounded-md hover:bg-accent"
+                    className="block w-full border-b border-border/60 px-1 py-3 text-left text-base font-medium text-muted-foreground transition-colors duration-200 hover:text-orange-500 focus-visible:text-orange-500"
                   >
                     {item.name}
                   </button>
@@ -95,4 +99,4 @@ export function Navigation() {
       </div>
     </motion.nav>
   )
-} 
+}
