@@ -4,4 +4,4 @@ export {
   StaggerItem,
   easeSmooth,
 } from "./scroll-reveal"
-export { TiltCard } from "./tilt-card"
+export { useAnimeScope } from "./use-anime-scope"

@@ -1,266 +1,106 @@
 "use client"
 
+import { useAnimeScope } from "@/components/motion"
 import { Button } from "@/components/ui/button"
-import { Github, Linkedin, MapPin, Twitter, Download, ArrowRight } from "lucide-react"
+import { ArrowDownRight, ArrowRight, Download, Github, Linkedin } from "lucide-react"
+import { animate, stagger, type Scope } from "animejs"
+import Image from "next/image"
 import Link from "next/link"
-import { motion, useReducedMotion, Variants } from "framer-motion"
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.1,
-    },
-  },
-}
-
-const itemVariants: Variants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  },
-}
-
-const imageVariants: Variants = {
-  hidden: { scale: 0.8, opacity: 0 },
-  visible: {
-    scale: 1,
-    opacity: 1,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut",
-    },
-  },
-}
+import { useCallback } from "react"
 
 export default function HeroSection() {
-  const reduceMotion = useReducedMotion()
+  const setupHero = useCallback((scope: Scope, root: HTMLElement) => {
+    if (scope.matches.reduceMotion) return
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+    animate(root.querySelectorAll(".hero-reveal"), {
+      opacity: { from: 0 },
+      y: { from: 18 },
+      delay: stagger(85),
+      duration: 680,
+      ease: "out(4)",
+    })
+
+    const portrait = root.querySelector(".editorial-portrait")
+    if (portrait) {
+      animate(portrait, {
+        opacity: { from: 0 },
+        clipPath: ["inset(0 0 100% 0)", "inset(0 0 0% 0)"],
+        duration: 900,
+        delay: 180,
+        ease: "inOutCubic",
+      })
     }
-  }
+  }, [])
+
+  const sectionRef = useAnimeScope<HTMLElement>(setupHero)
+
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-4 py-20  sm:py-0 sm:px-4 lg:px-6">
-      <div className="max-w-7xl mx-auto w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Content - Left Side */}
-          <motion.div 
-            className="text-center lg:text-left space-y-8 order-2 lg:order-1"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            <div className="space-y-6">
-              <motion.div 
-                className="flex items-center justify-center lg:justify-start gap-2"
-                variants={itemVariants}
-              >
-                <MapPin className="text-orange-500 w-5 h-5" />
-                <span className="text-muted-foreground">Bangladesh</span>
-              </motion.div>
-              
-              <motion.h1 
-                className="text-2xl sm:text-3xl lg:text-5xl xl:text-5xl font-bold leading-tight"
-                variants={itemVariants}
-              >
-                Hi, I&apos;m{" "}
-                <span className="text-gradient  bg-clip-text ">
-                  Sohan Talukder
-                </span>
-              </motion.h1>
+    <section ref={sectionRef} id="home" className="editorial-grid relative min-h-screen overflow-hidden pt-16">
+      <div className="mx-auto grid min-h-[calc(100vh-4rem)] max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.18fr_0.82fr] lg:px-8">
+        <div className="order-2 lg:order-1">
+          <div className="hero-reveal flex items-center gap-3 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">
+            <span className="h-2 w-2 rounded-full bg-orange-500" />
+            Software Engineer · Dhaka, Bangladesh
+          </div>
 
-              <motion.p
-                className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto lg:mx-0"
-                variants={itemVariants}
-              >
-                Md. Sohan Talukder Akash · React Native &amp; Flutter developer · Mobile app developer in
-                Bangladesh
-              </motion.p>
-              
-              <motion.p 
-                className="text-xl sm:text-2xl text-muted-foreground"
-                variants={itemVariants}
-              >
-                React Native &amp; Flutter Developer 👋
-              </motion.p>
-              
-              <motion.p 
-                className="text-lg text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed"
-                variants={itemVariants}
-              >
-                I build cross-platform mobile apps and modern web products from Dhaka, Bangladesh—React
-                Native, Flutter, TypeScript, and React—with a focus on performance, clean architecture, and
-                shipping apps people use every day.
-              </motion.p>
-            </div>
+          <h1 className="hero-reveal mt-7 max-w-5xl text-5xl font-bold leading-[0.92] tracking-[-0.065em] sm:text-6xl lg:text-[6.4rem]">
+            I build mobile products with{" "}
+            <span className="text-gradient">clarity and care.</span>
+          </h1>
 
-            {/* CTA Buttons */}
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-              variants={itemVariants}
-            >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button size="lg" onClick={() => scrollToSection('#projects')} className="bg-black text-white dark:bg-white dark:text-black font-medium cursor-pointer">
-                  View My Work
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link 
-                  href="/sohan-talukder-cv.pdf" 
-                  download="Sohan_Talukder_CV.pdf"
-                  target="_blank"
-                >
-                  <Button size="lg" variant="outline" className="font-medium cursor-pointer">
-                    <Download className="w-4 h-4" />
-                    Download CV
-                  </Button>
-                </Link>
-              </motion.div>
-            </motion.div>
+          <p className="hero-reveal mt-7 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            I&apos;m Sohan Talukder—a React Native and Flutter developer creating
+            dependable apps, scalable UI systems, and modern product experiences.
+          </p>
 
-            {/* Social Links */}
-            <motion.div 
-              className="flex justify-center lg:justify-start gap-8"
-              variants={itemVariants}
-            >
-              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                <Link 
-                  target="_blank"
-                  href="https://github.com/sohantalukder" 
-                  className="text-foreground/80 hover:text-foreground transition-colors"
-                >
-                  <Github className="w-6 h-6" />
-                </Link>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                <Link 
-                  target="_blank"
-                  href="https://linkedin.com/in/sohantalukder" 
-                  className="text-foreground/80 hover:text-foreground transition-colors"
-                >
-                  <Linkedin className="w-6 h-6" />
-                </Link>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                <Link 
-                  target="_blank"
-                  href="https://twitter.com/sohantalukder0" 
-                  className="text-foreground/80 hover:text-foreground transition-colors"
-                >
-                  <Twitter className="w-6 h-6" />
-                </Link>
-              </motion.div>
-            </motion.div>
-          </motion.div>
+          <div className="hero-reveal mt-8 flex flex-col gap-3 sm:flex-row">
+            <Button size="lg" className="group" asChild>
+              <Link href="#projects">
+                Selected work
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+              </Link>
+            </Button>
+            <Button size="lg" variant="outline" asChild>
+              <Link href="/sohan-talukder-cv.pdf" download="Sohan_Talukder_CV.pdf" target="_blank">
+                <Download className="h-4 w-4" />
+                Download CV
+              </Link>
+            </Button>
+          </div>
 
-          {/* Image - Right Side */}
-          <motion.div 
-            className="flex items-center justify-center w-full lg:w-auto order-1 lg:order-2"
-            variants={imageVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            <div className="relative">
-              {/* Floating particles — hidden when reduced motion is preferred */}
-              {!reduceMotion && (
-              <motion.div 
-                className="absolute -inset-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-              >
-                <motion.div 
-                  className="w-2 h-2 bg-orange-400 rounded-full absolute top-8 left-8"
-                  animate={{ 
-                    y: [0, -10, 0],
-                    opacity: [0.5, 1, 0.5]
-                  }}
-                  transition={{ 
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-                <motion.div 
-                  className="w-1 h-1 bg-amber-400 rounded-full absolute top-16 right-12"
-                  animate={{ 
-                    scale: [1, 1.2, 1],
-                    opacity: [0.6, 1, 0.6]
-                  }}
-                  transition={{ 
-                    duration: 1.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0.2
-                  }}
-                />
-                <motion.div 
-                  className="w-3 h-3 bg-orange-300 rounded-full absolute bottom-12 left-16"
-                  animate={{ 
-                    y: [0, -8, 0],
-                    x: [0, 2, 0]
-                  }}
-                  transition={{ 
-                    duration: 2.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0.4
-                  }}
-                />
-                <motion.div 
-                  className="w-1.5 h-1.5 bg-amber-300 rounded-full absolute bottom-8 right-8"
-                  animate={{ 
-                    scale: [1, 1.3, 1],
-                    rotate: [0, 180, 360]
-                  }}
-                  transition={{ 
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0.6
-                  }}
-                />
-              </motion.div>
-              )}
-              
-              {/* Decorative portrait (CSS); real img with alt for SEO and accessibility */}
-              <img
-                src="/sohan.png"
-                alt="Md. Sohan Talukder Akash, React Native and Flutter mobile app developer in Dhaka, Bangladesh"
-                width={400}
-                height={400}
-                decoding="async"
-                className="sr-only"
-              />
-              <motion.div 
-                className="hero-img mx-auto"
-                aria-hidden
-                whileHover={{ 
-                  scale: 1.05,
-                  transition: { duration: 0.3 }
-                }}
+          <div className="hero-reveal mt-9 flex items-center gap-5 text-sm text-muted-foreground">
+            <Link href="https://github.com/sohantalukder" target="_blank" rel="noopener noreferrer" className="editorial-link">
+              <Github className="h-4 w-4" /> GitHub
+            </Link>
+            <Link href="https://linkedin.com/in/sohantalukder" target="_blank" rel="noopener noreferrer" className="editorial-link">
+              <Linkedin className="h-4 w-4" /> LinkedIn
+            </Link>
+          </div>
+        </div>
+
+        <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
+          <figure className="editorial-portrait relative w-full max-w-[24rem]">
+            <div className="editorial-portrait-frame relative aspect-[4/5] overflow-hidden border border-border bg-muted">
+              <Image
+                src="/sohan-editorial.png"
+                alt="Md. Sohan Talukder Akash, React Native and Flutter developer"
+                fill
+                priority
+                sizes="(max-width: 1024px) 80vw, 384px"
+                className="object-cover object-center"
               />
             </div>
-          </motion.div>
+            <figcaption className="mt-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+              <span>Portrait / 2026</span>
+              <span>RN · Flutter · TypeScript</span>
+            </figcaption>
+          </figure>
         </div>
       </div>
+
+      <a href="#about" aria-label="Scroll to about" className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground md:flex">
+        Scroll <ArrowDownRight className="h-3.5 w-3.5" />
+      </a>
     </section>
   )
-} 
+}
