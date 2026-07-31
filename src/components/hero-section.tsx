@@ -2,6 +2,7 @@
 
 import { useAnimeScope } from "@/components/motion"
 import { Button } from "@/components/ui/button"
+import { siteConfig } from "@/lib/site-config"
 import { ArrowDownRight, ArrowRight, Download, Github, Linkedin } from "lucide-react"
 import { animate, stagger, type Scope } from "animejs"
 import Image from "next/image"
@@ -44,13 +45,18 @@ export default function HeroSection() {
           </div>
 
           <h1 className="hero-reveal mt-7 max-w-5xl text-5xl font-bold leading-[0.92] tracking-[-0.065em] sm:text-6xl lg:text-[6.4rem]">
-            I build mobile products with{" "}
-            <span className="text-gradient">clarity and care.</span>
+            <span className="mb-5 block font-mono text-sm font-medium uppercase tracking-[0.16em] text-muted-foreground sm:text-base">
+              {siteConfig.primaryName}
+            </span>
+            <span className="block">
+              I build mobile products with{" "}
+              <span className="text-gradient">clarity and care.</span>
+            </span>
           </h1>
 
           <p className="hero-reveal mt-7 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            I&apos;m Sohan Talukder—a React Native and Flutter developer creating
-            dependable apps, scalable UI systems, and modern product experiences.
+            I&apos;m a software engineer specializing in React Native and Flutter,
+            creating dependable apps, scalable UI systems, and modern product experiences.
           </p>
 
           <div className="hero-reveal mt-8 flex flex-col gap-3 sm:flex-row">
@@ -82,8 +88,8 @@ export default function HeroSection() {
           <figure className="editorial-portrait relative w-full max-w-[24rem]">
             <div className="editorial-portrait-frame relative aspect-[4/5] overflow-hidden border border-border bg-muted">
               <Image
-                src="/sohan-editorial.png"
-                alt="Md. Sohan Talukder Akash, React Native and Flutter developer"
+                src={siteConfig.images.portrait}
+                alt={`${siteConfig.primaryName}, Software Engineer and Mobile Developer`}
                 fill
                 priority
                 sizes="(max-width: 1024px) 80vw, 384px"

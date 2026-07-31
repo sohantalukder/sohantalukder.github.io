@@ -7,8 +7,14 @@
     "build": "next build",
     "start": "serve out -l 3000",
     "preview": "next build && serve out -l 3000",
-    "lint": "next lint",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "check:seo": "node scripts/check-seo.mjs",
+    "verify": "npm run lint && npm run typecheck && npm run build && npm run check:seo",
     "export": "next build"
+  },
+  "engines": {
+    "node": ">=22 <23"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

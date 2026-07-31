@@ -8,12 +8,6 @@ const nextConfig: NextConfig = {
   },
   basePath: '',
   assetPrefix: '',
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
 };
 
 export default nextConfig;

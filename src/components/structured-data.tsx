@@ -1,116 +1,90 @@
+import { absoluteUrl, siteConfig } from "@/lib/site-config"
+
 export function StructuredData() {
-  const siteUrl = "https://sohantalukder.github.io";
-  
-  const personSchema = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Md. Sohan Talukder",
-    "alternateName": ["Sohan Talukder", "Sohan", "Md. Sohan Talukder Akash", "Md. Sohan Talukder", "Sohan Talukder Akash", "Akash", "sohantalukder"],
-    "url": siteUrl,
-    "image": `${siteUrl}/thumbnail.png`,
-    "jobTitle": "React Native & Flutter Developer",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Freelancer"
-    },
-    "description":
-      "Md. Sohan Talukder Akash (Sohan Talukder) is a mobile app developer in Dhaka, Bangladesh, building apps with React Native, Flutter, and modern web stacks.",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Dhaka",
-      "addressCountry": "Bangladesh"
-    },
-    "nationality": "Bangladeshi",
-    "knowsAbout": [
-      "React Native",
-      "Flutter",
-      "Dart",
-      "Mobile App Development",
-      "iOS",
-      "Android",
-      "TypeScript",
-      "JavaScript",
-      "React",
-      "Next.js",
-      "Node.js",
-      "Web Development",
-      "Frontend Development",
-      "Backend Development",
-      "Software Engineering"
-    ],
-    "sameAs": [
-      "https://github.com/sohantalukder",
-      "https://linkedin.com/in/sohantalukder",
-      "https://twitter.com/sohantalukder0",
-      "https://sohantalukder.medium.com"
-    ],
-    "email": "mailto:mdtalukder.sohan@gmail.com"
-  };
+  const websiteId = `${siteConfig.url}#website`
+  const profileId = `${siteConfig.url}#profile`
+  const personId = `${siteConfig.url}#person`
 
-  const websiteSchema = {
+  const schema = {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Sohan Talukder Portfolio",
-    "alternateName": "Sohan Portfolio",
-    "url": siteUrl,
-    "description":
-      "Official portfolio of Md. Sohan Talukder Akash—React Native and Flutter developer, Mobile App Developer Bangladesh.",
-    "author": {
-      "@type": "Person",
-      "name": "Md. Sohan Talukder"
-    },
-    "inLanguage": "en-US",
-    "copyrightHolder": {
-      "@type": "Person", 
-      "name": "Md. Sohan Talukder"
-    },
-    "copyrightYear": "2026",
-    "genre": "Portfolio",
-    "keywords":
-      "Md. Sohan Talukder Akash, Sohan Talukder, React Native Developer Bangladesh, Mobile App Developer Bangladesh, Flutter Developer, React Native, Bangladesh"
-  };
-
-  const professionalService = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Sohan Talukder — Mobile & Web Development",
-    "description":
-      "React Native, Flutter, and full-stack web development for clients in Bangladesh and worldwide.",
-    "provider": {
-      "@type": "Person",
-      "name": "Md. Sohan Talukder"
-    },
-    "areaServed": [
-      { "@type": "Country", "name": "Bangladesh" },
-      { "@type": "Place", "name": "Worldwide" }
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": websiteId,
+        url: siteConfig.url,
+        name: siteConfig.name,
+        description: siteConfig.description,
+        inLanguage: siteConfig.language,
+        publisher: { "@id": personId },
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": profileId,
+        url: siteConfig.url,
+        name: siteConfig.title,
+        description: siteConfig.description,
+        inLanguage: siteConfig.language,
+        isPartOf: { "@id": websiteId },
+        mainEntity: { "@id": personId },
+      },
+      {
+        "@type": "Person",
+        "@id": personId,
+        name: siteConfig.primaryName,
+        alternateName: [
+          "Sohan Talukder",
+          "Md. Sohan Talukder Akash",
+          "Sohan Talukder Akash",
+          "sohantalukder",
+        ],
+        url: siteConfig.url,
+        image: {
+          "@type": "ImageObject",
+          url: absoluteUrl(siteConfig.images.portrait),
+          width: 768,
+          height: 1035,
+        },
+        jobTitle: "Software Engineer",
+        worksFor: {
+          "@type": "Organization",
+          name: "SELISE Digital Platforms",
+        },
+        description: siteConfig.description,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Dhaka",
+          addressCountry: "Bangladesh",
+        },
+        nationality: "Bangladeshi",
+        knowsAbout: [
+          "React Native",
+          "Flutter",
+          "Dart",
+          "Mobile App Development",
+          "iOS",
+          "Android",
+          "TypeScript",
+          "JavaScript",
+          "React",
+          "Next.js",
+          "Node.js",
+          "Software Engineering",
+        ],
+        sameAs: [
+          siteConfig.social.github,
+          siteConfig.social.linkedin,
+          siteConfig.social.twitter,
+          siteConfig.social.medium,
+        ],
+        email: `mailto:${siteConfig.email}`,
+      },
     ],
-    "serviceType": [
-      "React Native Development",
-      "Flutter Development",
-      "Mobile App Development",
-      "Web Development",
-      "Frontend Development",
-      "Backend Development",
-      "TypeScript Development",
-      "React Development"
-    ],
-    "url": siteUrl
-  };
+  }
 
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalService) }}
-      />
-    </>
-  );
-} 
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}

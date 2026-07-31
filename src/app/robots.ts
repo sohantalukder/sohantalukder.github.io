@@ -1,16 +1,15 @@
 import { MetadataRoute } from 'next'
+import { absoluteUrl } from '@/lib/site-config'
 
 export const dynamic = 'force-static'
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://sohantalukder.github.io'
-
   return {
     rules: {
       userAgent: '*',
       allow: '/',
       disallow: ['/private/'],
     },
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: absoluteUrl('/sitemap.xml'),
   }
 }

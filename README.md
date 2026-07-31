@@ -1,4 +1,4 @@
-# Sohan Talukder - Personal Portfolio
+# Md. Sohan Talukder - Personal Portfolio
 
 A modern, responsive personal portfolio built with Next.js, TypeScript, Tailwind CSS, and shadcn/ui components.
 
@@ -38,7 +38,7 @@ A modern, responsive personal portfolio built with Next.js, TypeScript, Tailwind
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 22
 - npm or yarn
 
 ### Installation
@@ -76,7 +76,8 @@ portfolio/
 ├── public/                 # Static assets
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml      # GitHub Actions workflow
+│       ├── ci.yml          # Pull-request validation
+│       └── deploy.yml      # Staging-to-production deployment
 └── ...
 ```
 
@@ -84,7 +85,7 @@ portfolio/
 
 ### Personal Information
 Update the following files with your information:
-- `src/components/hero-section.tsx` - Name, title, description
+- `src/lib/site-config.ts` - Canonical URL, primary name, title, description, social profiles, and shared images
 - `src/components/about-section.tsx` - About text and skills
 - `src/components/experience-section.tsx` - Work experience and education
 - `src/components/projects-section.tsx` - Featured projects
@@ -113,9 +114,10 @@ Place your images in the `public/` directory:
 
 This portfolio is automatically deployed to GitHub Pages using GitHub Actions. Here's how it works:
 
-1. **Automatic Deployment**: Every push to the `dev` branch triggers the deployment workflow
-2. **Build Process**: GitHub Actions builds the Next.js app as a static site
-3. **Live Site**: The site is deployed to [https://sohantalukder.github.io/](https://sohantalukder.github.io/)
+1. **Automatic Deployment**: Every push to the `staging` branch triggers the production workflow
+2. **Pull Request Validation**: Pull requests targeting `staging` run lint, type checks, the production build, and SEO export checks without deploying
+3. **Build Process**: GitHub Actions builds the Next.js app as a static site
+4. **Live Site**: The site is deployed to [https://sohantalukder.github.io/](https://sohantalukder.github.io/)
 
 #### To deploy your own version:
 
@@ -123,21 +125,23 @@ This portfolio is automatically deployed to GitHub Pages using GitHub Actions. H
 2. Enable GitHub Pages in your repository settings:
    - Go to Settings → Pages
    - Under "Source", select "GitHub Actions"
-3. Push changes to the `dev` branch
-4. GitHub Actions will automatically build and deploy your site
+3. Merge reviewed changes into the `staging` branch
+4. GitHub Actions will verify and deploy the static export
 
 #### Manual Build for Testing:
 ```bash
-npm run build  # Creates static export in 'out' directory
+npm run verify # Lints, type-checks, builds, and validates SEO output
 ```
 
 ## ⚙️ GitHub Actions Workflow
 
 The deployment is handled by `.github/workflows/deploy.yml` which:
-- Installs Node.js and dependencies
-- Builds the Next.js static export
+- Installs Node.js 22 and dependencies
+- Runs the full verification pipeline
 - Deploys to GitHub Pages
-- Runs on every push to `dev` branch
+- Runs only on pushes to `staging`
+
+Pull requests are handled by `.github/workflows/ci.yml`. They run the same verification pipeline but never receive GitHub Pages write permissions and cannot deploy production.
 
 ## 🤝 Contributing
 
@@ -153,7 +157,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 💬 Contact
 
-**Md. Sohan Talukder Akash**
+**Md. Sohan Talukder**
 - 🌐 Website: [https://sohantalukder.github.io/](https://sohantalukder.github.io/)
 - 💼 GitHub: [@sohantalukder](https://github.com/sohantalukder)
 - 📝 Medium: [@sohantalukder](https://sohantalukder.medium.com)
@@ -169,9 +173,9 @@ This project is open source and available under the [MIT License](LICENSE).
 1. **Build Errors**: Make sure all dependencies are installed with `npm install`
 2. **GitHub Pages Not Updating**: Check the Actions tab for deployment status
 3. **Images Not Loading**: Ensure images are in the `public/` directory
-4. **Styling Issues**: Run `npm run build` locally to test static export
+4. **Styling or SEO Issues**: Run `npm run verify` locally to validate the production export
 
 ### Environment Setup:
-- Node.js version: 18+
-- Next.js: 15.3.4
+- Node.js version: 22
+- Next.js: 15.5.14
 - Static export enabled for GitHub Pages compatibility
