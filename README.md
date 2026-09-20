@@ -31,8 +31,9 @@ A modern, responsive personal portfolio built with Next.js, TypeScript, Tailwind
 2. **About** - Personal story and skills showcase
 3. **Experience** - Work history and education
 4. **Projects** - Featured projects with live demos
-5. **Blog** - Latest articles from Medium
-6. **Contact** - Contact form and social links
+5. **Open Source Contribution** - Published React Native packages, stories, and documentation
+6. **Blog** - Latest articles from Medium
+7. **Contact** - Contact form and social links
 
 ## 🚀 Getting Started
 

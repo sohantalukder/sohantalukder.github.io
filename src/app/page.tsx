@@ -6,6 +6,7 @@ import { ScrollStorySection } from "@/components/scroll-story-section"
 import { TechStackSection } from "@/components/tech-stack-section"
 import ExperienceSection from "@/components/experience-section"
 import { ProjectsSection } from "@/components/projects-section"
+import { OpenSourceSection } from "@/components/open-source-section"
 import { BlogSection } from "@/components/blog-section"
 import ContactSection from "@/components/contact-section"
 import { Footer } from "@/components/footer"
@@ -22,6 +23,7 @@ export default function Home() {
         <TechStackSection />
         <ExperienceSection />
         <ProjectsSection />
+        <OpenSourceSection />
         <BlogSection />
         <ContactSection />
       </main>

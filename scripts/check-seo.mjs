@@ -68,6 +68,27 @@ const h1Text = decodeHtml(
 )
 assert.ok(h1Text.startsWith("Md. Sohan Talukder"), "H1 must begin with the primary name")
 
+assert.ok(html.includes('id="open-source"'), "Missing Open Source Contribution section")
+for (const packageName of [
+  "@sohantalukder/react-native-boilerplate",
+  "@sohantalukder/rn-kit",
+  "rn-phone-input-field",
+]) {
+  assert.ok(html.includes(packageName), `Missing open-source package: ${packageName}`)
+}
+for (const packageUrl of [
+  "https://www.npmjs.com/package/@sohantalukder/react-native-boilerplate",
+  "https://www.npmjs.com/package/@sohantalukder/rn-kit",
+  "https://www.npmjs.com/package/rn-phone-input-field",
+]) {
+  assert.ok(html.includes(packageUrl), `Missing public npm link: ${packageUrl}`)
+}
+assert.equal(
+  html.match(/aria-label="Copy install command"/g)?.length,
+  3,
+  "Each install command must have a copy button",
+)
+
 const jsonLdMatches = [
   ...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g),
 ]
