@@ -104,6 +104,7 @@ export default function ContactSection() {
         subject: formData.subject.trim(),
         message: formData.message.trim(),
         to_name: "Sohan Talukder",
+        date: new Date().toISOString(),
         reply_to: formData.email.trim(),
       }
 
@@ -191,11 +192,10 @@ export default function ContactSection() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -4 }}
                   transition={{ duration: 0.2, ease: easeSmooth }}
-                  className={`mb-7 flex items-start gap-2 border px-4 py-3 text-sm ${
-                    status === "success"
+                  className={`mb-7 flex items-start gap-2 border px-4 py-3 text-sm ${status === "success"
                       ? "border-green-600/30 bg-green-600/5 text-green-700 dark:text-green-300"
                       : "border-destructive/30 bg-destructive/5 text-destructive"
-                  }`}
+                    }`}
                 >
                   {status === "success" ? <CheckCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden /> : <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />}
                   <p>{statusMessage}</p>
