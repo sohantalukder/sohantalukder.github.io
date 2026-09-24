@@ -13,7 +13,7 @@ This happens when your EmailJS service connection to Gmail has expired or needs 
 
 ### Step 2: Reconnect Gmail Service
 1. Go to **Email Services** in your dashboard
-2. Find your existing Gmail service (service_1drssed)
+2. Find your existing Gmail service
 3. Click on **Settings** or **Edit**
 4. Click **Connect Account** or **Reconnect**
 5. Follow the OAuth flow to reauthorize Gmail access
@@ -21,7 +21,7 @@ This happens when your EmailJS service connection to Gmail has expired or needs 
 
 ### Step 3: Verify Template
 1. Go to **Email Templates** 
-2. Find your template (template_txiorsb)
+2. Find your contact template
 3. Make sure it has the following variables:
    - `{{from_name}}`
    - `{{from_email}}`
